@@ -14,15 +14,19 @@
           <li><a href="#">นครศรีธรรมราช</a></li>
         </ul>
       </li>
-      <li><a href="#">จองตั๋ว</a></li>
+      <li><a href="reserve">จองตั๋ว</a></li>
+      <li><a href="reserve">ยืนยันการชำระเงิน</a></li>
       <li><a href="#">เส้นทางการเดินรถ</a></li>
       <li><a href="#">วิธีการจองและชำระเงิน</a></li>
       <li><a href="#">ขั้นตอนการจอง</a></li>
-      <li><a href="#">ติดต่อเรา</a></li>
-      <li><a href="#">โปรโมชัน</a></li>
       <li><a href="#">ข่าวสาร</a></li>
+      <li><a href="#">ติดต่อเรา</a></li>
+      
     </ul>
     <ul class="nav navbar-nav navbar-right">
+    @if (Auth::user()->email=="nanping3856@gmail.com")
+      <li><a href="{{url('main_admin')}}">Admin</a></li>
+    @endif
       <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>
   </div>

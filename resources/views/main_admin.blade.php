@@ -18,39 +18,61 @@
 <body>
 
 @include('navbar_admin')
-  <div class="container">
+<div class="container">
  <div class="row">
   <div class="col-md-4">
-  <form>
+  <form method="post" action="{{url('serach')}}">
+  {{csrf_field()}}
+  <h2>เที่ยวรถที่ต้องการเดินทาง</h2>
     <div class="form-group">
       <label for="sel1">ต้นทาง</label>
-      <select class="form-control" id="sel1">
-        <option>ภูเก็ต</option>
-        <option>พังงา</option>
-        <option>กระบี่</option>
-        <option>สุราษธานี</option>
-        <option>นครศรีธรรมราช</option>
+      <select class="form-control" name="source">
+      @foreach($source as $s)
+        <option value={{$s->source}} >{{$s->source}}</option>
+      @endforeach
       </select>
       <br>
       <label for="sel1">ปลายทาง</label>
-      <select class="form-control" id="sel1">
-        <option>ภูเก็ต</option>
-        <option>พังงา</option>
-        <option>กระบี่</option>
-        <option>สุราษธานี</option>
-        <option>นครศรีธรรมราช</option>
+      <select class="form-control" name="endways">
+       @foreach($endways as $e)
+        <option value={{$e->endways}} >{{$e->endways}}</option>
+      @endforeach
       </select>
       <br>
       <label for="sel1">วันที่ออกเดินทาง</label>
-      <input class="form-control" type="date"></input>
+      <input class="form-control" type="date" value="time_out"></input>
     </div>
-  </form>
-  <button id="search" name="search" class="btn btn-info">Serch</button>
+  <button id="submit" name="submit" class="btn btn-info">Search</button>
+   </form>
 </div>
 </div>
 </div>
-
-
-
+<div class="container">
+  <h2>เที่ยวรถ</h2>         
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        
+        <th>ต้นทาง</th>
+        <th>ปลายทาง</th>
+        <th>เวลาที่รถออก</th>
+      </tr>
+      <tbody>
+    
+      @foreach($carride_tbls as $c)
+      <tr>   
+       
+       <td>{{$c->source}}</td>
+       <td>{{$c->endways}}</td>
+      <td>{{$c->time_out}}</td>
+      </tr> 
+      @endforeach
+  
+    </tbody>
+    </thead>
+  </table>
+    </fieldset>
+</div>
+</form>
 </body>
 </html>

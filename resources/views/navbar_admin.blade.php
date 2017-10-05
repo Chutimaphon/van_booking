@@ -8,9 +8,7 @@
       <li><a href="regis_carride">ข้อมูลเที่ยวรถ</a></li>
       <li><a href="regis_driver">ข้อมูลคนขับรถ</a></li>
       <li><a href="regis_van">ข้อมูลรถ</a></li>
-      <li><a href="#">ข้อมูลที่นั่งภายในรถ</a></li>
       <li><a href="#">ข้อมูลบริษัท</a></li>
-      <li><a href="#">โปรโมชัน</a></li>
       <li><a href="#">ข่าวสาร</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

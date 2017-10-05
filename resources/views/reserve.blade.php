@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <title>Booking van</title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,31 +17,31 @@
 </head>
 <body>
 
-@include('navbar')
+@include('navbar_1')
   
 <div class="container">
  <div class="row">
   <div class="col-md-4">
   <form method="post" action="{{url('serach')}}">
   {{csrf_field()}}
+  <h1>จองตั๋วรถ</h1>
   <h2>เที่ยวรถที่ต้องการเดินทาง</h2>
     <div class="form-group">
       <label for="sel1">ต้นทาง</label>
-      <select class="form-control" name="source">
+      <select class="form-control" name="source" required>
       @foreach($source as $s)
         <option value={{$s->source}} >{{$s->source}}</option>
       @endforeach
       </select>
       <br>
       <label for="sel1">ปลายทาง</label>
-      <select class="form-control" name="endways">
+      <select class="form-control" name="endways" required>
        @foreach($endways as $e)
         <option value={{$e->endways}} >{{$e->endways}}</option>
       @endforeach
       </select>
       <br>
-      <label for="sel1">วันที่ออกเดินทาง</label>
-      <input class="form-control" type="date" value="time_out"></input>
+      
     </div>
   <button id="submit" name="submit" class="btn btn-info">Search</button>
    </form>
@@ -67,15 +67,20 @@
        
        <td>{{$c->source}}</td>
        <td>{{$c->endways}}</td>
-      <td>{{$c->time_out}}</td>
+       <td>{{$c->time_out}}</td>
+      <form class="form-horizontal" action="{{url('reserve_ticket')}}" method="POST" role="form">
+      {!! csrf_field() !!}
+      <input type="hidden" name="carrid_id" value="{{$c->carrid_id}}">
+      <td><button type=submit id="search" name="search" class="btn btn-info">จอง</button></td>
+      </form>
       </tr> 
       @endforeach
   
     </tbody>
     </thead>
-  </table>
+  </table></div></div>
     </fieldset>
-</div></div></div>
+</div>
 </form>
 </body>
 </html>

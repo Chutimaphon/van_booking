@@ -18,7 +18,6 @@
       <li><a href="#">วิธีการจองและชำระเงิน</a></li>
       <li><a href="#">ขั้นตอนการจอง</a></li>
       <li><a href="#">ติดต่อเรา</a></li>
-      <li><a href="#">โปรโมชัน</a></li>
       <li><a href="#">ข่าวสาร</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

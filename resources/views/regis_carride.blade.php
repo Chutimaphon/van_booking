@@ -28,45 +28,46 @@
   <h2>บันทึกเที่ยวรถ</h2>
     <div class="form-group">
       <label for="inputdefault">ต้นทาง</label>
-      <input class="form-control" name="source"id="inputdefault" type="text">
+      <input class="form-control" name="source"id="inputdefault" type="text" required="">
     </div>
     <div class="form-group">
       <label for="inputdefault">ปลายทาง</label>
-      <input class="form-control" name="endways"id="inputdefault" type="text">
+      <input class="form-control" name="endways"id="inputdefault" type="text"required="">
     </div>
     <div class="form-group">
       <label for="sel1">เวลาที่รถออก</label>
-      <input class="form-control" name="time_out" type="time"></input>
+      <input class="form-control" name="time_out" type="time" required=""></input>
     </div> 
   <button id="submitbutton" name="submitbotton" class="btn btn-success">Save</button>
-  <button id="search" name="search" class="btn btn-info">Edit</button>
 
 </div>
 </div></div><br><br>
 <div class="container">
-  <h2>เที่ยวรถ</h2>            
+<div class="row">
+  <div class="col-md-12">
+  <h2>เที่ยวรถ</h2>      
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>เลขที่เที่ยวรถ</th>
         <th>ต้นทาง</th>
         <th>ปลายทาง</th>
         <th>เวลาที่รถออก</th>
       </tr>
       <tbody>
     @foreach($carride_tbls as $c)
-      <tr>
-       <td>{{$c->carrid_id}}</td>
+      <tr>   
        <td>{{$c-> source}}</td>
        <td>{{$c-> endways}}</td>
       <td>{{$c->  time_out}}</td>
+    <td><a href="{{url('/update')}}/{{$c->carrid_id}}" id="search" name="search" class="btn btn-info">Edit</a></td>
+      <td><a href="{{url('/delete')}}/{{$c->carrid_id}}" id="search" name="search" class="btn btn-danger">Delete</a></td> 
       </tr> 
       @endforeach
     </tbody>
     </thead>
-  </table>
-    </fieldset>
-</div>
+  </table><center>
+    {{ $carride_tbls->links() }}
+</div></div></div></center>
 </form>
 </body>
 </html>

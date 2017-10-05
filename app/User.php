@@ -26,4 +26,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function owns($user,$reservation) {
+        return $user->id == $reservation->id;
+    }
 }
