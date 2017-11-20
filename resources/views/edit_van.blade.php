@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <title>Bootstrap Example</title>
+  <title>Booking van</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,10 +37,6 @@
     <div class="form-group">
       <label for="inputdefault">จำนวนที่นั่งภายในรถ</label>
       <input class="form-control" name = "seat" id="inputdefault" type="text" value="{{$van_tbls->seat}}">
-    </div>
-    <div class="form-group">
-      <label for="sel1">ราคา</label>
-      <input class="form-control" name = "cost"id="inputdefault" type="text" value="{{$van_tbls->cost}}">
     </div>
     <div class="form-group">
       <label for="sel1">ช่องที่จอดรถ</label>

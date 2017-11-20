@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <title>Bootstrap Example</title>
+  <title>Booking van</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -38,7 +38,7 @@
       <label for="sel1">เวลาที่รถออก</label>
       <input class="form-control" name="time_out" type="time" required=""></input>
     </div> 
-  <button id="submitbutton" name="submitbotton" class="btn btn-success">Save</button>
+  <button id="submitbutton" name="submitbotton" class="btn btn-success"><span class="glyphicon glyphicon-saved"></span>  Save</button>
 
 </div>
 </div></div><br><br>
@@ -59,8 +59,8 @@
        <td>{{$c-> source}}</td>
        <td>{{$c-> endways}}</td>
       <td>{{$c->  time_out}}</td>
-    <td><a href="{{url('/update')}}/{{$c->carrid_id}}" id="search" name="search" class="btn btn-info">Edit</a></td>
-      <td><a href="{{url('/delete')}}/{{$c->carrid_id}}" id="search" name="search" class="btn btn-danger">Delete</a></td> 
+    <td><a href="{{url('/update')}}/{{$c->carrid_id}}" id="search" name="search" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+      <td><a href="{{url('/delete')}}/{{$c->carrid_id}}" id="search" name="search" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><span class="glyphicon glyphicon-trash"></span> Delete</a></td> 
       </tr> 
       @endforeach
     </tbody>
@@ -69,7 +69,12 @@
     {{ $carride_tbls->links() }}
 </div></div></div></center>
 </form>
-</body>
-</html>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#confirm').on('click', function (e) {
+                $('#deletes').trigger('submit');
+            });
+        });
+    </script>
 </body>
 </html>

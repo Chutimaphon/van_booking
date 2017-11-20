@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <title>Bootstrap Example</title>
+  <title>Booking van</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -43,7 +43,7 @@
     </div>
     
   </form>
-  <button id="search" name="search" class="btn btn-success">Save</button>
+  <button id="search" name="search" class="btn btn-success"><span class="glyphicon glyphicon-saved"></span> Save</button>
 </div>
 </div></div><br><br>
 <div class="container">
@@ -63,18 +63,23 @@
        <td>{{$c->lname}}</td>
        <td>{{$c->address}}</td>
        <td>{{$c->tel}}</td>
-       <td><a href="{{url('/updatedriver')}}/{{$c->id_driver}}" id="search" name="search" class="btn btn-info">Edit</a></td>
-       <td><a href="{{url('/deletedriver')}}/{{$c->id_driver}}" id="search" name="search" class="btn btn-danger">Delete</a></td>
+       <td><a href="{{url('/updatedriver')}}/{{$c->id_driver}}" id="search" name="search" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+       <td><a href="{{url('/deletedriver')}}/{{$c->id_driver}}" id="search" name="search" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
       </tr> 
       @endforeach
     </tbody>
     </thead>
-  </table>
+  </table><center>
   {{ $driver_tbl->links() }}
-  </fieldset>
+  </fieldset></center>
 </div>
 </form>
-</body>
-</html>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#confirm').on('click', function (e) {
+                $('#deletes').trigger('submit');
+            });
+        });
+    </script>
 </body>
 </html>

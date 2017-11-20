@@ -42,7 +42,6 @@ class DriverController extends Controller
    {
       $driver_tbl = DB::table('driver_tbls')->orderBy('id_driver', 'desc')->paginate(25);
 
-      $driver_tbl->setPath('driver_tbls');
         return View('regis_driver')->with('driver_tbl',$driver_tbl);
     }
   public function update($id_driver) {

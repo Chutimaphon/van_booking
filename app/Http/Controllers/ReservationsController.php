@@ -73,4 +73,86 @@ class ReservationsController extends Controller
         return redirect('reservations');
     }
     
+   public function hitkohlanta()
+   { 
+    return view('hitkohlanta');
+   }
+
+   public function posthitkohlanta(Request $request)
+   {
+    $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
+    $source = $request->get('source');
+    $endways = $request->get('endways'); 
+    $sourcep = DB::table('carride_tbls')
+                        ->where('source', $source)
+                        ->distinct()->get(['source']);
+    $endwaysp = DB::table('carride_tbls')
+                        ->where('endways', $endways)
+                        ->distinct()->get(['endways']);
+    return view('reserve')->with('source',$sourcep)
+                          ->with('endways',$endwaysp)
+                          ->with('carride_tbls',$carride_tbls);
+   }
+
+   public function hitsurad()
+   { 
+    return view('hitsurad');
+   }
+   public function posthitsurad(Request $request)
+   {
+    $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
+    $source = $request->get('source');
+    $endways = $request->get('endways'); 
+    $sourcep = DB::table('carride_tbls')
+                        ->where('source', $source)
+                        ->distinct()->get(['source']);
+    $endwaysp = DB::table('carride_tbls')
+                        ->where('endways', $endways)
+                        ->distinct()->get(['endways']);
+    return view('reserve')->with('source',$sourcep)
+                          ->with('endways',$endwaysp)
+                          ->with('carride_tbls',$carride_tbls);
+   }
+
+   public function hitnakhon()
+   { 
+    return view('hitnakhon');
+   }
+   public function posthitnakhon(Request $request)
+   {
+    $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
+    $source = $request->get('source');
+    $endways = $request->get('endways'); 
+    $sourcep = DB::table('carride_tbls')
+                        ->where('source', $source)
+                        ->distinct()->get(['source']);
+    $endwaysp = DB::table('carride_tbls')
+                        ->where('endways', $endways)
+                        ->distinct()->get(['endways']);
+    return view('reserve')->with('source',$sourcep)
+                          ->with('endways',$endwaysp)
+                          ->with('carride_tbls',$carride_tbls);
+   }
+
+   public function hithatyai()
+   { 
+    return view('hithatyai');
+   }
+   public function posthithatyai(Request $request)
+   {
+    $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
+    $source = $request->get('source');
+    $endways = $request->get('endways'); 
+    $sourcep = DB::table('carride_tbls')
+                        ->where('source', $source)
+                        ->distinct()->get(['source']);
+    $endwaysp = DB::table('carride_tbls')
+                        ->where('endways', $endways)
+                        ->distinct()->get(['endways']);
+    return view('reserve_selected')->with('source',$sourcep)
+                          ->with('endways',$endwaysp)
+                          ->with('carride_tbls',$carride_tbls);
+   }
 }
+
+

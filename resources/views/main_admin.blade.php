@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <title>Bootstrap Example</title>
+  <title>Booking van</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,15 +39,15 @@
       @endforeach
       </select>
       <br>
-      <label for="sel1">วันที่ออกเดินทาง</label>
-      <input class="form-control" type="date" value="time_out"></input>
     </div>
-  <button id="submit" name="submit" class="btn btn-info">Search</button>
+  <button id="submit" name="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Search</button>
    </form>
 </div>
 </div>
 </div>
 <div class="container">
+<div class="row">
+  <div class="col-md-5">
   <h2>เที่ยวรถ</h2>         
   <table class="table table-striped">
     <thead>
@@ -72,7 +72,7 @@
     </thead>
   </table>
     </fieldset>
-</div>
+</div></div></div>
 </form>
 </body>
 </html>

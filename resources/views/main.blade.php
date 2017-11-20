@@ -18,6 +18,7 @@
 <body>
 
 @include('navbar')
+
   
 <div class="container">
  <div class="row">
@@ -40,17 +41,15 @@
       @endforeach
       </select>
       <br>
-      <label for="sel1">วันที่ออกเดินทาง</label>
-      <input class="form-control" type="date" value="time_out"></input>
     </div>
-  <button id="submit" name="submit" class="btn btn-info">Search</button>
+  <button id="submit" name="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Search</button>
    </form>
 </div>
 </div>
 </div>
 <div class="container">
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-5">
   <h2>เที่ยวรถ</h2>         
   <table class="table table-striped">
     <thead>

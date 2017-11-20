@@ -31,6 +31,7 @@ class CarrideController extends Controller
         $data->source = $request->get('source');
         $data->endways = $request->get('endways');
         $data->time_out = $request->get('time_out');
+        $data->id_van = 4;
         /*$data->description = $request->get('description');*/
         $data->save();
         return Redirect::to('regis_carride');

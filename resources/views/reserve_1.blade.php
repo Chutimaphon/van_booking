@@ -6,6 +6,26 @@
 	</title>
 </head>
 <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Booking van</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+  body {
+    background-color:  #e6e6ff;
+  }
+  </style>
+</head>
+<body>
+
+@include('navbar_1')
 <div style="overflow-x:auto;">
 <table class="table table-bordered">
           <thead class="thead-inverse">
@@ -37,9 +57,9 @@
 		<td>{{$item->date}}</td>
 		<td>{{$item->seat}}</td>
 		@can('show',$item)
-			<form method="post" action="reservations/{{$item->id}}" class="form-inline">
+			<form method="post" action="reservations/{{$item->id_res}}" class="form-inline">
 				<td><input type="hidden" name="_method" value="Delete">
-				<button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i> ยกเลิก</button> </td>
+				<button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i><span class="glyphicon glyphicon-remove"></span> Cancle</button> </td>
 				{{csrf_field()}}
 			</form>
 		@endcan
@@ -51,7 +71,7 @@
 </div>
 <br>
 @if ( !Auth::guest() )
-	<a href="reserve" class="btn btn-success"> เพิ่มรายการ </a>
+	<a href="reserve" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add List </a>
 	<br>
 	<br>
 @endif
