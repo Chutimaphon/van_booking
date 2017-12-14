@@ -3,12 +3,10 @@
 
   <a class="navbar-brand" href="main_1">
                     <div class="form-inline">
-                    <img src="{{url('img/bookingvan.png')}}" width="38" height="38" alt=""> <b>Booking Van</b>
+                    <img src="{{url('/img/bookingvan.png')}}" width="38" height="38" alt=""> <b>Booking Van</b>
                     </div>
   </a>
-   <!--  <div class="navbar-header">
-      <a class="navbar-brand" href="main_1"><img src="{{url('img/bookingvan.png')}}" width="45" height="45"><b>Booking Van</b></a>
-    </div> -->
+   
     <ul class="nav navbar-nav">
       <li class="active"><a href="main_1"><span class="glyphicon glyphicon-home"></span> Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">จุดจำหน่ายตั๋ว <span class="caret"></span></a>
@@ -24,7 +22,7 @@
       </li>
       <li><a href="vanroute">เส้นทางการเดินรถ</a></li>
       <li><a href="news">ข่าวสาร</a></li>
-      <li><a href="#">ติดต่อเรา</a></li>
+      <li><a href="we">ความช่วยเหลือ</a></li>
       
     </ul>
     <ul class="nav navbar-nav navbar-right">

@@ -15,6 +15,8 @@ use Session;
 use Input;
 use App\Van_tbl;
 use App\Carride_tbl;
+use App\Reservation;
+use App\Points;
 
 class VanController extends Controller
 {
@@ -41,6 +43,10 @@ class VanController extends Controller
    }
       public function reserve_ticket(Request $request)
    {
+        $pp = $request->get('pp');
+        $nn = $request->get('nn');
+        $cost = $request->get('cost');
+        $datein = $request->get('datein');
         $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
         $carride = (Carride_tbl::find($request->carrid_id));
         $van = (Van_tbl::find($carride->id_van));
@@ -48,7 +54,11 @@ class VanController extends Controller
         
         return view('reserve_ticket')->with('carride',$carride)
                                       ->with('carride_tbls',$carride_tbls)
-                                      ->with('van',$van);
+                                      ->with('van',$van)
+                                      ->with('pp',$pp)
+                                      ->with('nn',$nn)
+                                      ->with('cost',$cost)
+                                      ->with('datein',$datein);
    }
     public function goback()
    {  
@@ -58,13 +68,20 @@ class VanController extends Controller
     }
     public function getreserve_ticket()
    {  
+
      $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
          $carride = DB::table('Carride_tbls')->where('carrid_id', 110)->get();
         $van = DB::table('Van_tbls')->where('id',2)->get();
+        $pp =  "";
+        $nn =  "";
+        $cost =  "";
         
         return view('reserve_ticket')->with('carride',$carride[0])
                                       ->with('carride_tbls',$carride_tbls)
-                                      ->with('van',$van[0]);
+                                      ->with('van',$van[0])
+                                      ->with('pp',$pp)
+                                      ->with('nn',$nn)
+                                      ->with('cost',$cost);
 
     }
 
@@ -106,6 +123,7 @@ class VanController extends Controller
      $source = $request->get('source');
      $endways = $request->get('endways');
      $date = $request->get('date');
+     
 
      $NUM_PAGE = 1000;
      $page = $request->input('page');
@@ -124,6 +142,14 @@ class VanController extends Controller
    }
 
    public function serach1(Request $request){
+      $pp = $request->get('psource');
+      $nn = $request->get('pendway');
+      
+      $cost = DB::table('points')->where('psource','like','%'.$pp.'%')
+                                 ->where('pendway','like','%'.$nn.'%')
+                                 ->value('cost');
+     $datein = $request->get('datein');
+     $dateout = $request->get('dateout');
      $source = $request->get('source');
      $endways = $request->get('endways');
      $date = $request->get('date');
@@ -132,21 +158,32 @@ class VanController extends Controller
                                               ->where('endways', 'like',$endways)->get();
       $source = DB::table('carride_tbls')->distinct()->get(['source']);
     $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
-     return view('reserve')->with('carride_tbls',$carride_tbls)
+     return view('reserve_2')->with('carride_tbls',$carride_tbls)
                           ->with('source',$source)
                           ->with('endways',$endways)
-                          ->with('date',$date);
+                          ->with('date',$date)
+                          ->with('cost',$cost)
+                          ->with('pp',$pp)
+                          ->with('nn',$nn)
+                          ->with('datein',$datein)
+                          ->with('dateout',$dateout);
 
    }
-   public function reserve(){
+   public function reserve_2(){
     $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
     $source = DB::table('carride_tbls')->distinct()->get(['source']);
     $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
+    $pp =  "";
+    $nn =  "";
+    $cost =  "";
     
       $carride_tbls->setPath('carride_tbls');
     return view('reserve')->with('carride_tbls',$carride_tbls)
                           ->with('source',$source)
-                          ->with('endways',$endways);
+                          ->with('endways',$endways)
+                          ->with('cost',$cost)
+                          ->with('pp',$pp)
+                          ->with('nn',$nn);
    }
 
    public function main(){
@@ -189,6 +226,71 @@ class VanController extends Controller
                           ->with('source',$source)
                           ->with('endways',$endways);
    }
+   public function twoway()
+   {
+      $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
+      $source = DB::table('carride_tbls')->distinct()->get(['source']);
+      $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
+      $pp =  "";
+      $nn =  "";
+      $cost =  "";
+    
+      $carride_tbls->setPath('carride_tbls');
+      return view('reserve')->with('delete',1)
+                            ->with('carride_tbls',$carride_tbls)
+                            ->with('source',$source)
+                            ->with('endways',$endways)
+                            ->with('cost',$cost)
+                            ->with('pp',$pp)
+                            ->with('nn',$nn);
+   }
+
+   public function bookcar(Request $request)
+   {
+      $checktime = DB::table('reservations')   ->where('date',$request->datein)
+                                                 ->where('time_out',$request->time_out)
+                                                 ->where('seat',$request->checkbox)->get();
+
+     if(count($checktime)==0)
+        {
+          $pp = $request->get('pp');
+          $nn = $request->get('nn');
+          $carride_id = $request->get('carrid_id');
+          $id_van = $request->get('id_van');
+          $id = $request->get('id');
+          $checkbox = $request->get('checkbox');
+          $datein = $request->get('datein');
+          $time_out = $request->get('time_out');
+          $points = DB::table('points')->where('psource',$pp)->where('pendway',$nn)->value('id_point');
+          $num = $request->get('num');  
+        for($i=0;$i<count($checkbox);$i++)
+        {
+          $data = new Reservation;
+          $data->id_van = $id_van;
+          $data->carrid_id = $carride_id;
+          $data->date = $datein;
+          $data->id = $id;
+          $data->time_out = $time_out;
+          $data->id_point = $points;
+          $data->seat = $checkbox[$i];
+          $data->save();
+        } 
+       return redirect('reservations');
+        }
+       else
+        {   $datein = $request->get('datein');
+            $carride = (Carride_tbl::find($request->carrid_id));
+            $van = (Van_tbl::find($carride->id_van));
+            $pp = "";
+            $nn = "";
+            return view('reserve_ticket')->with('errors','วันที่ '.$request->datein.' เวลา '.$request->time_out.' มีคนจองแล้วค่ะ '. 'กรุณากรอกข้อมูลใหม่')
+                                         ->with('carride',$carride)
+                                         ->with('van',$van)
+                                         ->with('datein',$datein)
+                                         ->with('pp',$pp)
+                                         ->with('nn',$nn);
+        }
 
 
+}
 }

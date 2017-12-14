@@ -43,11 +43,17 @@ class ReservationsController extends Controller
         }
         else
         {
+            $pp =  "";
+            $nn =  "";
+            $cost =  "";
             $carride = (Carride_tbl::find($request->carrid_id));
             $van = (Van_tbl::find($carride->id_van));
             return view('reserve_ticket')->with('errors','วันที่ '.$request->date.' เวลา '.$request->time_out.' มีคนจองแล้วค่ะ '. 'กรุณากรอกข้อมูลใหม่')
             ->with('carride',$carride)
-                                      ->with('van',$van);
+                                      ->with('van',$van)
+                                      ->with('cost',$cost)
+                                      ->with('pp',$pp)
+                                      ->with('nn',$nn);
         }
     }
     /*public function show($id)
@@ -86,12 +92,18 @@ class ReservationsController extends Controller
     $sourcep = DB::table('carride_tbls')
                         ->where('source', $source)
                         ->distinct()->get(['source']);
+    $pp =  "";
+    $nn =  "";
+    $cost =  "";
     $endwaysp = DB::table('carride_tbls')
                         ->where('endways', $endways)
                         ->distinct()->get(['endways']);
     return view('reserve')->with('source',$sourcep)
                           ->with('endways',$endwaysp)
-                          ->with('carride_tbls',$carride_tbls);
+                          ->with('carride_tbls',$carride_tbls)
+                          ->with('cost',$cost)
+                          ->with('pp',$pp)
+                          ->with('nn',$nn);
    }
 
    public function hitsurad()
@@ -109,9 +121,15 @@ class ReservationsController extends Controller
     $endwaysp = DB::table('carride_tbls')
                         ->where('endways', $endways)
                         ->distinct()->get(['endways']);
+    $pp =  "";
+    $nn =  "";
+    $cost =  "";
     return view('reserve')->with('source',$sourcep)
                           ->with('endways',$endwaysp)
-                          ->with('carride_tbls',$carride_tbls);
+                          ->with('carride_tbls',$carride_tbls)
+                          ->with('cost',$cost)
+                          ->with('pp',$pp)
+                          ->with('nn',$nn);
    }
 
    public function hitnakhon()
@@ -129,9 +147,15 @@ class ReservationsController extends Controller
     $endwaysp = DB::table('carride_tbls')
                         ->where('endways', $endways)
                         ->distinct()->get(['endways']);
+    $pp =  "";
+    $nn =  "";
+    $cost =  "";
     return view('reserve')->with('source',$sourcep)
                           ->with('endways',$endwaysp)
-                          ->with('carride_tbls',$carride_tbls);
+                          ->with('carride_tbls',$carride_tbls)
+                          ->with('cost',$cost)
+                          ->with('pp',$pp)
+                          ->with('nn',$nn);
    }
 
    public function hithatyai()
@@ -149,10 +173,17 @@ class ReservationsController extends Controller
     $endwaysp = DB::table('carride_tbls')
                         ->where('endways', $endways)
                         ->distinct()->get(['endways']);
+    $pp =  "";
+    $nn =  "";
+    $cost =  "";
     return view('reserve_selected')->with('source',$sourcep)
                           ->with('endways',$endwaysp)
-                          ->with('carride_tbls',$carride_tbls);
+                          ->with('carride_tbls',$carride_tbls)
+                          ->with('cost',$cost)
+                          ->with('pp',$pp)
+                          ->with('nn',$nn);
    }
+   
 }
 
 

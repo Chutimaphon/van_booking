@@ -45,6 +45,18 @@ Route::get('/kohlanta', function () {
     return view('kohlanta');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
+Route::get('/checkstatus', function () {
+    return view('checkstatus');
+});
+
+Route::get('/we', function () {
+    return view('we');
+});
+
 Route::get('/hitkohlanta','ReservationsController@hitkohlanta');
 Route::post('/hitkohlanta','ReservationsController@posthitkohlanta');
 
@@ -57,11 +69,15 @@ Route::post('/hitnakhon','ReservationsController@posthitnakhon');
 Route::get('/hithatyai','ReservationsController@hithatyai');
 Route::post('/hithatyai','ReservationsController@posthithatyai');
 
+Route::get('/reserve_2','ReservationsController@reserve_2');
+Route::post('/reserve_2','ReservationsController@reserve_2');
+
 Route::get('/vanroute', function () {
     return view('vanroute');
 });
 
 Route::POST('reserve_ticket','VanController@reserve_ticket');
+Route::get('reserve_ticket','VanController@reserve_ticket');
 Route::get('reserve_ticket','VanController@getreserve_ticket');
 Route::get('/goback','VanController@goback');
 
@@ -85,8 +101,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::post('/serach','VanController@serach');
-Route::post('/serach1','VanController@serach1');
-Route::get('/reserve','VanController@reserve');
+Route::get('/serach','VanController@serach');
+Route::post('/reserve_2','VanController@serach1');
+Route::get('/reserve_2','VanController@serach1');
+Route::get('/reserve','VanController@reserve_2');
+Route::get('/twoway','VanController@twoway');
 
 Route::get('/main','VanController@main');
 Route::get('/main_1','VanController@main_1');
@@ -103,13 +122,14 @@ Route::get('/deletevan/{id}', 'VanController@delete');
 Route::get('/updatedriver/{id}', 'DriverController@update');
 Route::post('/updatedriver', 'DriverController@updateAction');
 Route::get('/deletedriver/{id}', 'DriverController@delete');
-
-Route::get('/updatenews/{id}', 'NewsController@update');
-Route::post('/updatenews', 'NewsController@updateAction');
 Route::get('/deletenews/{id}', 'NewsController@delete');
+Route::post('upload', 'NewsController@upload');
+Route::get('upload', 'NewsController@upload');
+
 
 
 Route::resource('reservations','ReservationsController');
+Route::post('bookcar','VanController@bookcar');
 
 Route::get('changepassword', 'Auth\UpdatePasswordController@index')->name('password.form');
 Route::post('changepassword', 'Auth\UpdatePasswordController@update')->name('password.update');

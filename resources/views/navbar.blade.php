@@ -19,7 +19,7 @@
         </ul>
       </li>
       <li><a href="vanroute">เส้นทางการเดินรถ</a></li>
-      <li><a href="#">ติดต่อเรา</a></li>
+      <li><a href="we">ความช่วยเหลือ</a></li>
       <li><a href="news">ข่าวสาร</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

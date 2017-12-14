@@ -25,9 +25,7 @@
   <br><br></div>
   <div class="col-md-8">
   <center><h2>จองเที่ยวรถ</h2><br>
-
-<a href="{{url('reserve_ticket')}}" id="search" name="search" class="btn btn-info">เที่ยวเดียว</a>
-<br><br>   
+<br>   
 <a href="{{url('goback')}}" name="back" id="back" class="btn btn-info">ไป-กลับ</a>
 
 <br><br>

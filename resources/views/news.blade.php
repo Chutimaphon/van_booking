@@ -5,78 +5,96 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script>
-	// Carousel Auto-Cycle
-  $(document).ready(function() {
-    $('.carousel').carousel({
-      interval: 6000
-    })
-  });
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-</script>
-
+ <style>
+  body {
+    background-color:  #e6e6ff;
+  }
+  </style>
 </head>
 <body>
-@include('navbar_1')
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+  <a class="navbar-brand" href="main_1">
+                     <b>Booking Van</b>
+  </a>
+   
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="main_1"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">จุดจำหน่ายตั๋ว <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="phuket">ภูเก็ต</a></li>
+          <li><a href="pangnga">พังงา</a></li>
+          <li><a href="krabi">กระบี่</a></li>
+          <li><a href="surad">สุราษฎร์ธานี</a></li>
+          <li><a href="nakhon">นครศรีธรรมราช</a></li>
+          <li><a href="hatyai">หาดใหญ่</a></li>
+          <li><a href="kohlanta">เกาะลันตา</a></li>
+        </ul>
+      </li>
+      <li><a href="vanroute">เส้นทางการเดินรถ</a></li>
+      <li><a href="news">ข่าวสาร</a></li>
+      <li><a href="#">ติดต่อเรา</a></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+    @if(!Auth::guest())
+      @if (Auth::user()->email=="nanping3856@gmail.com")
+        <li><a href="{{url('main_admin')}}" class="btn btn-info">Admin</a></li>
+      @endif
+    @endif
+      <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user col-sm-2"></span>&nbsp;
+                                    {{ Auth::user()->fname}} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            <span class="glyphicon glyphicon-log-out"></span>  Logout
+                                        </a>
+                                        <li><a href="{{url('changepassword')}}" class="fa fa-key"> Change Password</a></li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+    </ul>
+  </div>
+</nav>
+
+
 <div class="container">
-<div class="col-xs-12">
+  <div class="row">
+    <h2>NEWS</h2>
 
-    <div class="page-header">
-        <h3>ข่าวประชาสัมพันธ์</h3>
-        <p>News</p>
-    </div>
- 
-       
-
-    <div class="carousel slide" id="myCarousel">
-        <div class="carousel-inner">
-        <?php $i=0; $j=0;?>
-        @foreach($newgets as $c)
-        	@if($i==0)
-            <div class="item active">
-                    <ul class="thumbnails">
-            @elseif($j==0)
-            <div class="item">
-                    <ul class="thumbnails">
-            @endif
-                   
-                   
-                        <li class="col-sm-3">
-    						<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-								</div>
-								<div class="caption">
-									<h4>  {{$c->name}}</h4>
-									<p>{{$c->details}}</p>
-									<a class="btn btn-mini" href="#">» Read More</a>
-								</div>
-                            </div>
-                        </li>
-                         <?php $j++; ?>
-              @if($j==2)
-                    </ul>
-              </div><!-- /Slide1 -->
-              <?php $i++; $j=0; ?>
-              @endif 
-           @endforeach
-        </div>
+    <section id="pinBoot">
+@foreach($newgets as $s)
+      <article class="white-panel">
+      <img class="img img-responsive img-rounded" width=" 60%"  src="{{url("/uploads/{$s->picture}")}}"><br>
+          <h4>{{$s->name}}</h4>
+          <p>{{$s->details}}</p>
         
-       
-	   <nav>
-			<ul class="control-box pager">
-				<li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
-				<li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
-			</ul>
-		</nav>
-	   <!-- /.control-box -->   
-                              
-    </div><!-- /#myCarousel -->
+      </article>
+@endforeach
+    </section>
 
-    </body>
-</html>
-        
-</div><!-- /.col-xs-12 -->          
+    <hr>
 
-</div><!-- /.container -->
+  </div>
+  <p>
+    <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fbootsnipp.com%2Fiframe%2FZkk0O" target="_blank"><small>News</small><sup>5</sup></a>
+    <br>
+    <br>
+
+  </p>
+ <script src="{{asset('/js/news.js')}}"></script>
+ <script src="{{asset('/js/picture.js')}}"></script>
+</div>
+</body></html>

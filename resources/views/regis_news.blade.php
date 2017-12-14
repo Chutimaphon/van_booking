@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
   body {
@@ -16,7 +17,7 @@
   </style>
 </head>
 <body>
-<form class="form-horizontal" action="{{url('news')}}" method="POST" role="form">
+<form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <fieldset>
 
@@ -34,6 +35,7 @@
       <label for="inputdefault">รายละเอียด</label>
       <textarea rows="10" cols="80" name="details"id="inputdefault" required=""></textarea>
     </div>
+     <input type="file" name="file" id="file"><br>
    
   <button id="submitbutton" name="submitbotton" class="btn btn-success"><span class="glyphicon glyphicon-saved"></span> Save</button>
 
@@ -54,7 +56,6 @@
       <tr>   
        <td>{{$c-> name}}</td>
        <td>{{$c-> details}}</td>
-    <td><a href="{{url('/updatenews')}}/{{$c->id_news}}" id="search" name="search" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
       <td><a href="{{url('/deletenews')}}/{{$c->id_news}}" id="search" name="search" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')"><span class="glyphicon glyphicon-trash"></span> Delete</a></td>
       </tr> 
       @endforeach
