@@ -99,7 +99,6 @@
 			<form method="post" action="reservations/{{$item->id_res}}" class="form-inline">
 				<td><input type="hidden" name="_method" value="Delete">
 				<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Cancle</button> 
-				<button class="btn btn-default btn-xs"><i class="fa fa-eye"></i></button></td>
 				{{csrf_field()}}
 			</form>
 		@endcan
@@ -111,7 +110,8 @@
 </div>
 <br>
 @if ( !Auth::guest() )
-	<a href="reserve" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add List </a>
+	<a href="{{url('reserve')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add List </a>
+  <a href="{{url('ticket')}}" class="btn btn-warning"><span class="glyphicon glyphicon-bitcoin"></span> ชำระเงิน </a>
 	<br>
 	<br>
 @endif

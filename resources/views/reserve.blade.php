@@ -95,17 +95,27 @@ var app = angular.module('app', [], function ($interpolateProvider) {
 <div class="col-md-4">
    <h2>เที่ยวรถที่ต้องการเดินทาง</h2> <br><br></div></div></div>
 
+
 <div class="container">
 <div class="row">
 <div class="col-md-4"></div>
         <div class="col-md-2">
-            <a href="reserve" class="btn btn-primary btn-lg btn-block btn-huge">เที่ยวเดียว</a>
+         @if($twoway)
+             <a href="reserve"  class="btn btn-primary btn-lg btn-block btn-huge">เที่ยวเดียว</a>
+             @else
+            <a id="reserve1"  class="btn btn-danger btn-lg btn-block btn-huge">เที่ยวเดียว</a>
+            @endif
         </div>
         <div class="col-md-2">
-            <a href="{{url('/twoway')}}" class="btn btn-primary btn-lg btn-block btn-huge">ไป-กลับ</a>
+            @if($twoway)
+                <a href="{{url('/twoway')}}" class="btn btn-danger btn-lg btn-block btn-huge">ไป-กลับ</a>
+            @else
+                <a id="reserve2" href="{{url('/twoway')}}" class="btn btn-primary btn-lg btn-block btn-huge">ไป-กลับ</a>
+            @endif
         </div>
           
         </div></div><br><br>
+    
 <div class="container">
 <div class="row">
 <div class="col-md-3"></div>

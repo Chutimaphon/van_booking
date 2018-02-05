@@ -47,8 +47,19 @@ class VanController extends Controller
         $nn = $request->get('nn');
         $cost = $request->get('cost');
         $datein = $request->get('datein');
+        $source = $request->get('source');
+        $endways = $request->get('endways');
+        $time_out = $request->get('time_out');
+        $id_van = DB::table('carride_tbls')->where('source',$source)
+                                           ->Where('endways',$endways)
+                                           ->Where('time_out',$time_out)->value('id_van'); 
+        $carride_id=DB::table('carride_tbls')->where('source',$source)
+                                           ->Where('endways',$endways)
+                                           ->Where('time_out',$time_out)->value('carrid_id');  
+        $seat = DB::table('reservations')->where('id_van',$id_van)->get();
+
         $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
-        $carride = (Carride_tbl::find($request->carrid_id));
+        $carride = (Carride_tbl::find($carride_id));
         $van = (Van_tbl::find($carride->id_van));
 
         
@@ -58,7 +69,10 @@ class VanController extends Controller
                                       ->with('pp',$pp)
                                       ->with('nn',$nn)
                                       ->with('cost',$cost)
-                                      ->with('datein',$datein);
+                                      ->with('datein',$datein)
+                                      ->with('time_out',$time_out)
+                                      ->with('id_van',$id_van)
+                                      ->with('seat',$seat);
    }
     public function goback()
    {  
@@ -156,6 +170,7 @@ class VanController extends Controller
 
      $carride_tbls = DB::table('carride_tbls')->where('source', 'like',$source)
                                               ->where('endways', 'like',$endways)->get();
+                                              
       $source = DB::table('carride_tbls')->distinct()->get(['source']);
     $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
      return view('reserve_2')->with('carride_tbls',$carride_tbls)
@@ -183,7 +198,8 @@ class VanController extends Controller
                           ->with('endways',$endways)
                           ->with('cost',$cost)
                           ->with('pp',$pp)
-                          ->with('nn',$nn);
+                          ->with('nn',$nn)
+                          ->with('twoway',false);
    }
 
    public function main(){
@@ -242,17 +258,21 @@ class VanController extends Controller
                             ->with('endways',$endways)
                             ->with('cost',$cost)
                             ->with('pp',$pp)
-                            ->with('nn',$nn);
+                            ->with('nn',$nn)
+                            ->with('twoway',true);
    }
 
    public function bookcar(Request $request)
    {
+
       $checktime = DB::table('reservations')   ->where('date',$request->datein)
                                                  ->where('time_out',$request->time_out)
                                                  ->where('seat',$request->checkbox)->get();
 
+
      if(count($checktime)==0)
         {
+
           $pp = $request->get('pp');
           $nn = $request->get('nn');
           $carride_id = $request->get('carrid_id');
@@ -262,7 +282,8 @@ class VanController extends Controller
           $datein = $request->get('datein');
           $time_out = $request->get('time_out');
           $points = DB::table('points')->where('psource',$pp)->where('pendway',$nn)->value('id_point');
-          $num = $request->get('num');  
+          $num = $request->get('num'); 
+
         for($i=0;$i<count($checkbox);$i++)
         {
           $data = new Reservation;
@@ -283,12 +304,17 @@ class VanController extends Controller
             $van = (Van_tbl::find($carride->id_van));
             $pp = "";
             $nn = "";
+            $seat= null;
+            $time_out = $request->get('time_out');
             return view('reserve_ticket')->with('errors','วันที่ '.$request->datein.' เวลา '.$request->time_out.' มีคนจองแล้วค่ะ '. 'กรุณากรอกข้อมูลใหม่')
                                          ->with('carride',$carride)
                                          ->with('van',$van)
                                          ->with('datein',$datein)
                                          ->with('pp',$pp)
+                                         ->with('seat',$seat)
+                                         ->with('time_out',$time_out)
                                          ->with('nn',$nn);
+
         }
 
 

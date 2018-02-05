@@ -67,7 +67,7 @@
 <div class="container">
   <div class="row">
    <div class="col-md-6">
-   <h3>วันที่ออกเดินทาง : {{$datein}}</h3>
+   <h3>วันออกเดินทาง : {{$datein}}</h3>
    <input type="hidden" name="datein" value="{{$datein}}"></input>
    </div>
     <div class="col-md-6">
@@ -84,8 +84,8 @@
       @foreach($carride_tbls as $c)
       <tr>   
        
-       <td style="white-space: normal; background-repeat:no-repeat; background-position:center ;  padding-bottom:5px;cursor:pointer;" valign="bottom">{{$c->source}}</td><input type="hidden" name="source" value="{{$c->source}}">
-       <td>{{$c->endways}}</td><input type="hidden" name="endways" value="{{$c->endways}}">
+       <td style="white-space: normal; background-repeat:no-repeat; background-position:center ;  padding-bottom:5px;cursor:pointer;" valign="bottom">{{$c->source}}</td>
+       <td>{{$c->endways}}</td>
        <td>{{$c->time_out}}</td>
 
       {!! csrf_field() !!}
@@ -93,7 +93,50 @@
       <input type="hidden" name="pp" value="{{$pp}}">
       <input type="hidden" name="nn" value="{{$nn}}">
       <input type="hidden" name="cost" value="{{$cost}}">
-      <td><button type=submit id="search" name="time_out" class="btn btn-info" value="{{$c->time_out}}" ><span class="glyphicon glyphicon-ok"></span> จอง</button></td>
+      <td><button type=submit id="search" name="search" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span> จอง</button></td>
+      </form>
+      </tr> 
+      @endforeach
+  
+    </tbody>
+    </thead>
+  </table>
+    </fieldset>
+   </div>
+   </div>
+</div>
+<br><br>
+ <form class="form-horizontal" action="{{url('reserve_ticket')}}" method="POST" role="form">
+<div class="container">
+  <div class="row">
+   <div class="col-md-6">
+   <h3>วันเดินทางกลับ : {{$datein}}</h3>
+   <input type="hidden" name="datein" value="{{$datein}}"></input>
+   </div>
+    <div class="col-md-6">
+    
+     <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ต้นทาง</th>
+        <th>ปลายทาง</th>
+        <th>เวลาที่รถออก</th>
+      </tr>
+      <tbody>
+    
+      @foreach($carride_tbls as $c)
+      <tr>   
+       
+       <td style="white-space: normal; background-repeat:no-repeat; background-position:center ;  padding-bottom:5px;cursor:pointer;" valign="bottom">{{$c->source}}</td>
+       <td>{{$c->endways}}</td>
+       <td>{{$c->time_out}}</td>
+
+      {!! csrf_field() !!}
+      <input type="hidden" name="carrid_id" value="{{$c->carrid_id}}">
+      <input type="hidden" name="pp" value="{{$pp}}">
+      <input type="hidden" name="nn" value="{{$nn}}">
+      <input type="hidden" name="cost" value="{{$cost}}">
+      <td><button type=submit id="search" name="search" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span> จอง</button></td>
       </form>
       </tr> 
       @endforeach

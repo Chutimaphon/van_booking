@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+    Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/main', function () {
@@ -57,6 +57,9 @@ Route::get('/we', function () {
     return view('we');
 });
 
+Route::get('/cart','ReservationsController@cart');
+Route::get('/ticket','ReservationsController@ticket');
+
 Route::get('/hitkohlanta','ReservationsController@hitkohlanta');
 Route::post('/hitkohlanta','ReservationsController@posthitkohlanta');
 
@@ -76,7 +79,7 @@ Route::get('/vanroute', function () {
     return view('vanroute');
 });
 
-Route::POST('reserve_ticket','VanController@reserve_ticket');
+Route::post('reserve_ticket','VanController@reserve_ticket');
 Route::get('reserve_ticket','VanController@reserve_ticket');
 Route::get('reserve_ticket','VanController@getreserve_ticket');
 Route::get('/goback','VanController@goback');
@@ -133,3 +136,4 @@ Route::post('bookcar','VanController@bookcar');
 
 Route::get('changepassword', 'Auth\UpdatePasswordController@index')->name('password.form');
 Route::post('changepassword', 'Auth\UpdatePasswordController@update')->name('password.update');
+

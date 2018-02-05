@@ -19,7 +19,7 @@
 </head>
 <body>
 
-@include('navbar_1')<br>
+@include('navbar_1') <br>
 <h3><span class="glyphicon glyphicon-tree-deciduous"></span> วัดพระมหาธาตุวรมหาวิหาร (นครศรีธรรมราช)</h3>
 <h5>อัพเดตล่าสุดเมื่อ : 14 พฤศจิกายน 2560</h5><br><br>
 

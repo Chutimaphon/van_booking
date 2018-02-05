@@ -1,4 +1,10 @@
-<nav class="navbar navbar-default">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+</head>
+<body>
+    <nav class="navbar navbar-default">
   <div class="container-fluid">
 
   <a class="navbar-brand" href="main_1">
@@ -30,9 +36,9 @@
       @if (Auth::user()->email=="nanping3856@gmail.com")
         <li><a href="{{url('main_admin')}}" class="btn btn-info">Admin</a></li>
       @endif
-    @endif
       <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user col-sm-2"></span>&nbsp;
+
                                     {{ Auth::user()->fname}} <span class="caret"></span>
                                 </a>
 
@@ -50,6 +56,12 @@
                                     </li>
                                 </ul>
                             </li>
+      @else
+      <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    @endif
     </ul>
   </div>
 </nav>
+</body>
+</html>

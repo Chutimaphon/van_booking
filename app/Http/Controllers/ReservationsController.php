@@ -25,7 +25,7 @@ class ReservationsController extends Controller
     // }
     
     public function index(Request $request)    {
-        $reservations = Reservation::orderBy('updated_at','desc')->get();
+        $reservations = Reservation::where('id',Auth::user()->id)->orderBy('updated_at','desc')->get();
         return view('reserve_1')->with('reservations',$reservations);
     }
     public function create()    {
@@ -183,6 +183,25 @@ class ReservationsController extends Controller
                           ->with('pp',$pp)
                           ->with('nn',$nn);
    }
+   public function ticket(Request $request)    {
+        $total = 0;
+        $reservations = Reservation::where('id',Auth::user()->id)->get();
+        $cart = array();
+        foreach ($reservations as $item) {
+          $total+=DB::table('points')->where('id_point',$item->id_point)->get()[0]->cost;
+
+          
+        }
+        // $cart = DB::table('points')->where('id_point',Auth::user()->id)->get();
+
+        // foreach ($cart as $item) {
+        //   $total += DB::table('points')->where('id_point',$item->id_point)->value('cost');
+          
+        // }
+        return view('ticket')->with('reservations',$reservations)
+                             ->with('total',$total);
+    }
+
    
 }
 
