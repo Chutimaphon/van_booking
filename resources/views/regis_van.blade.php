@@ -18,10 +18,8 @@
 </head>
 <body>
 @include('navbar_admin')
-<form class="form-horizontal" action="{{url('van')}}" method="POST" role="form">
-                   
+<form class="form-horizontal" action="{{url('van')}}" method="POST" role="form"> 
                     <fieldset>
-
 <div class="container">
 <div class="row">
   <div class="col-md-4">
@@ -53,7 +51,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>เลขทะเบียนรถ</th> 
+        <th>เลขทะเบียนรถ</th>  
         <th>ยี่ห้อรถ</th>
         <th>จำนวนที่นั่งภายในรถ</th>
         <th>ช่องที่จอดรถ</th>

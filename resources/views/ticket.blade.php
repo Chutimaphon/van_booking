@@ -22,7 +22,7 @@
 
 @include('navbar_1')
 
-<div class="container">
+
 	<div class="row">
 		
         <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
@@ -44,27 +44,23 @@
 
                              <p><b>ชื่อผู้จอง :</b>
                              <td>
+                                @if($name!=null)
+                                  {{$name}}
+                                @else
                                 <?php 
                                     echo (DB::table('users')->where('id',Auth::user()->id)->value('fname'));
                                 ?>
                                 <?php 
                                     echo (DB::table('users')->where('id',Auth::user()->id)->value('lname'));
                                 ?>
+                                @endif
                             </td></p>
                             <p><b>เลขที่การจอง :</b>
                             <td>
-                                <?php 
-                                    echo (DB::table('reservations')->where('id',Auth::user()->id)->value('id_res'));
-                                ?>
+                                {{$reservations[0]->id_res}}
                             </td>
                             </p>
-                            <p><b>วันที่ออกเดินทาง :</b>
-                            <td>
-                                <?php 
-                                    echo (DB::table('reservations')->where('id',Auth::user()->id)->value('date'));
-                                ?>
-                            </td>
-                            </p>
+                           
 						</div>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4">
@@ -73,13 +69,15 @@
 				</div>
             </div>
 			<br><br>
-            <div>
+            <div style="overflow-x:auto;">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ต้นทาง</th>
                             <th>ปลายทาง</th>
-                            <th>เลขที่นั่ง</th>
+                            <th>วันที่เดินทาง</th>
+                            <th>เวลา</th>
+                            <th>ที่นั่ง</th>
                             <th>ทะเบียนรถ</th>
                             <th>ช่องจอดรถ</th>
                             <th>ราคา</th>
@@ -99,15 +97,25 @@
                                     echo (DB::table('carride_tbls')->where('carrid_id',$item->carrid_id)->value('endways'));
                                 ?>
                             </td>
-                            <td>{{$item->seat}}</td>
                             <td>
                                 <?php 
-                                    echo (DB::table('van_tbls')->where('id',$item->id)->value('id_van'));
+                                    echo (DB::table('reservations')->where('id_res',$item->id_res)->value('date'));
                                 ?>
                             </td>
                             <td>
                                 <?php 
-                                    echo (DB::table('van_tbls')->where('id',$item->id)->value('parking_box'));
+                                    echo (DB::table('reservations')->where('id_res',$item->id_res)->value('time_out'));
+                                ?>
+                            </td>
+                            <td>{{$item->seat}}</td>
+                            <td>
+                                <?php 
+                                    echo (DB::table('van_tbls')->where('id',$item->id_van)->value('id_van'));
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    echo (DB::table('van_tbls')->where('id',$item->id_van)->value('parking_box'));
                                 ?>
                             </td>
                             <td>
@@ -118,6 +126,8 @@
                         </tr>
                         @endforeach
                         <tr>
+                           <td></td>
+                           <td></td>
                            <td></td>
                            <td></td>
                            <td></td>
@@ -134,6 +144,4 @@
 			
         </div>    
 	</div>
-</div>
-
 

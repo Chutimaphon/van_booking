@@ -76,13 +76,12 @@
            <th></th>
            </tr>
           </thead>
+          @if($reservations!=null)
 @foreach( $reservations as  $index => $item )
 		<tbody>
         <tr> 
 		<td>{{$index+1}}</td>
-		<td><?php 
-		echo (DB::table('users')->where('id',$item->id)->value('fname'));
-		?></td></td>
+		<td>{{$name}}</td></td>
 		<td><?php 
 		echo (DB::table('carride_tbls')->where('carrid_id',$item->carrid_id)->value('source'));
 		?></td>
@@ -98,14 +97,23 @@
 		@can('show',$item)
 			<form method="post" action="reservations/{{$item->id_res}}" class="form-inline">
 				<td><input type="hidden" name="_method" value="Delete">
-				<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Cancle</button> 
+        <input type="hidden" name="name" value="{{$name}}">
+				<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Cancel</button> 
 				{{csrf_field()}}
 			</form>
 		@endcan
-
+    @if($anony)
+      <form method="post" action="reservations/{{$item->id_res}}" class="form-inline">
+        <td><input type="hidden" name="_method" value="Delete">
+        <input type="hidden" name="name" value="{{$name}}">
+        <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Cancel</button> 
+        {{csrf_field()}}
+      </form>
+    @endif
 	    </tr>
       </tbody>
 @endforeach
+@endif
 </table>
 </div>
 <br>
@@ -115,7 +123,15 @@
 	<br>
 	<br>
 @endif
-
+@if($anony)
+  <form method="post" action="ticket" >
+    {!! csrf_field() !!}
+    <input type="hidden" name="name" value="{{$name}}">
+    <button class="btn btn-warning"><span class="glyphicon glyphicon-bitcoin"></span> ชำระเงิน </button>
+  </form>
+  <br>
+  <br>
+@endif
 </body>
 </html>
 

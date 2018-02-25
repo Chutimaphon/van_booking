@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="main">
                     <div class="form-inline">
-                    <img src="{{url('img/bookingvan.png')}}" width="38" height="38" alt=""> <b>Booking Van</b>
+                    <font color="orange"><i class="fa fa-truck fa-1x"></i></font> <b>Booking Van</b>
                     </div>
   </a>
     <ul class="nav navbar-nav">
@@ -19,8 +19,10 @@
         </ul>
       </li>
       <li><a href="vanroute">เส้นทางการเดินรถ</a></li>
+      <li><a href="reserve">จองตั๋ว</a></li>
       <li><a href="we">ความช่วยเหลือ</a></li>
       <li><a href="news">ข่าวสาร</a></li>
+      <li><a href="stepreserve">วิธีการจอง</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

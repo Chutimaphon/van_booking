@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	 <title>Booking van</title>
+   <title>Booking van</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -77,8 +77,7 @@
   </div>
 <div class="col-md-2"></div>
   <div class="col-md-6">
-  <h2>เที่ยวรถ</h2>
-  <h4>เดินทางไป</h4>    
+  <h2>เที่ยวรถ</h2>    
   <table class="table table-striped">
     <thead>
       <tr>
@@ -89,17 +88,36 @@
         <th>เวลาที่รถออก</th>
       </tr>
       <tbody>
+      @if(count($seat)>0)
+  <div class="alert alert-danger"><strong>ที่นั่ง
+      @foreach($seat as $a)
+     {{$a->seat}}  
+      @endforeach  มีคนจองแล้วค่ะ </strong>
+  </div>
+  @endif
     <form action="{{url('bookcar')}}" method="post">
       @for($i=1;$i<=$van->seat;$i++)
       <tr>
+        <?php $check=false;?>
+        @if(count($seat)>0)
+          @foreach($seat as $a)
+            @if($i==$a->seat)
+              <?php $check=true; break;?>
+            @endif
+          @endforeach
+        @endif
+        @if($check)
+          <th><span style="color:red;" class="glyphicon glyphicon-remove"></span></th>
+        @else
         <th><input type="checkbox" name="checkbox[]" value="{{$i}}"></th>
+        @endif
         <th>{{$i}}</th>
         <th>{{$carride->source}}</th>
         <th>{{$carride->endways}}</th>
-        <th>{{$carride->time_out}}</th>
-        <input type="hidden" name="time_out" value="{{$carride->time_out}}"></input>
+        <th>{{$time_out}}</th>
+        <input type="hidden" name="time_out" value="{{$time_out}}"></input>
       </tr>
-      @endfor
+      @endfor 
     </tbody>
     </thead>
   </table>
@@ -108,54 +126,76 @@
      {{csrf_field()}}  
      <input type="hidden" name="datein" value="{{$datein}}"></input>
      <input type="hidden" name="carrid_id" value="{{$carride->carrid_id}}">
-     <input type="hidden" name="id_van" value="{{$carride->id_van}}">
+     <input type="hidden" name="id_van" value="{{$id_van}}">
      <input type="hidden" name="id" value="{{Auth::user()->id}}">
      <input type="hidden" name="pp" value="{{$pp}}">
      <input type="hidden" name="nn" value="{{$nn}}">
-
-     <br><br>
-     <h4>เดินทางกลับ</h4>    
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th></th>
-        <th>เลขที่นั่ง</th>
-        <th>ต้นทาง</th>
-        <th>ปลายทาง</th>
-        <th>เวลาที่รถออก</th>
-      </tr>
-      <tbody>
-    <form action="{{url('bookcar')}}" method="post">
-      @for($i=1;$i<=$van->seat;$i++)
-      <tr>
-        <th><input type="checkbox" name="checkbox[]" value="{{$i}}"></th>
-        <th>{{$i}}</th>
-        <th>{{$carride->source}}</th>
-        <th>{{$carride->endways}}</th>
-        <th>{{$carride->time_out}}</th>
-        <input type="hidden" name="time_out" value="{{$carride->time_out}}"></input>
-      </tr>
-      @endfor
-    </tbody>
-    </thead>
-  </table>
-  <br><br></div>
- 
-     {{csrf_field()}}  
-     <input type="hidden" name="datein" value="{{$datein}}"></input>
-     <input type="hidden" name="carrid_id" value="{{$carride->carrid_id}}">
-     <input type="hidden" name="id_van" value="{{$carride->id_van}}">
-     <input type="hidden" name="id" value="{{Auth::user()->id}}">
-     <input type="hidden" name="pp" value="{{$pp}}">
-     <input type="hidden" name="nn" value="{{$nn}}">
-
 
      <div class="row">
      <div class="col-md-8"></div>
      <div class="col-md-2">
-     <button type="submit" class="btn btn-success btn-lg btn-block btn-huge">จอง </button></div>
-     </div></div></div>
+     </div></div></div></div>
     </form></div>
 
+    <h2>เที่ยวรถ</h2>    
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>เลขที่นั่ง</th>
+        <th>ต้นทาง</th>
+        <th>ปลายทาง</th>
+        <th>เวลาที่รถออก</th>
+      </tr>
+      <tbody>
+      @if(count($seat)>0)
+  <div class="alert alert-danger"><strong>ที่นั่ง
+      @foreach($seat as $a)
+     {{$a->seat}}  
+      @endforeach  มีคนจองแล้วค่ะ </strong>
+  </div>
+  @endif
+    <form action="{{url('bookcar')}}" method="post">
+      @for($i=1;$i<=$van->seat;$i++)
+      <tr>
+        <?php $check=false;?>
+        @if(count($seat)>0)
+          @foreach($seat as $a)
+            @if($i==$a->seat)
+              <?php $check=true; break;?>
+            @endif
+          @endforeach
+        @endif
+        @if($check)
+          <th><span style="color:red;" class="glyphicon glyphicon-remove"></span></th>
+        @else
+        <th><input type="checkbox" name="checkbox[]" value="{{$i}}"></th>
+        @endif
+        <th>{{$i}}</th>
+        <th>{{$carride->source}}</th>
+        <th>{{$carride->endways}}</th>
+        <th>{{$time_out}}</th>
+        <input type="hidden" name="time_out" value="{{$time_out}}"></input>
+      </tr>
+      @endfor 
+    </tbody>
+    </thead>
+  </table>
+  <br><br></div>
+ 
+     {{csrf_field()}}  
+     <input type="hidden" name="datein" value="{{$datein}}"></input>
+     <input type="hidden" name="carrid_id" value="{{$carride->carrid_id}}">
+     <input type="hidden" name="id_van" value="{{$id_van}}">
+     <input type="hidden" name="id" value="{{Auth::user()->id}}">
+     <input type="hidden" name="pp" value="{{$pp}}">
+     <input type="hidden" name="nn" value="{{$nn}}">
+
+     <div class="row">
+     <div class="col-md-8"></div>
+     <div class="col-md-2">
+     <button type="submit" class="btn btn-success btn-lg btn-block btn-huge">จอง </button><br><br><br><br></div>
+     </div></div></div>
+    </form></div>
 </head>
 </html>

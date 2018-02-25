@@ -27,7 +27,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md 6">
-      <h1>จองตั๋วรถ</h1>
+      <h1>เลือกเวลาออกเดินทาง</h1>
 
           <div class="row bs-wizard" style="border-bottom:0;">
                 
@@ -89,6 +89,9 @@
        <td>{{$c->time_out}}</td>
 
       {!! csrf_field() !!}
+       <input type="hidden" name="twoways" value="false">
+       <input type="hidden" name="name" value="{{$name}}">
+       <input type="hidden" name="tel" value="{{$tel}}">
       <input type="hidden" name="carrid_id" value="{{$c->carrid_id}}">
       <input type="hidden" name="pp" value="{{$pp}}">
       <input type="hidden" name="nn" value="{{$nn}}">

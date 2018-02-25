@@ -45,6 +45,10 @@ Route::get('/kohlanta', function () {
     return view('kohlanta');
 });
 
+Route::get('/stepreserve', function () {
+    return view('stepreserve');
+});
+
 Route::get('/test', function () {
     return view('test');
 });
@@ -59,6 +63,7 @@ Route::get('/we', function () {
 
 Route::get('/cart','ReservationsController@cart');
 Route::get('/ticket','ReservationsController@ticket');
+Route::post('/ticket','ReservationsController@ticket');
 
 Route::get('/hitkohlanta','ReservationsController@hitkohlanta');
 Route::post('/hitkohlanta','ReservationsController@posthitkohlanta');
@@ -72,11 +77,13 @@ Route::post('/hitnakhon','ReservationsController@posthitnakhon');
 Route::get('/hithatyai','ReservationsController@hithatyai');
 Route::post('/hithatyai','ReservationsController@posthithatyai');
 
-Route::get('/reserve_2','ReservationsController@reserve_2');
-Route::post('/reserve_2','ReservationsController@reserve_2');
 
 Route::get('/vanroute', function () {
     return view('vanroute');
+});
+
+Route::get('/receipts', function () {
+    return view('receipts');
 });
 
 Route::post('reserve_ticket','VanController@reserve_ticket');
@@ -106,8 +113,13 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/serach','VanController@serach');
 Route::get('/serach','VanController@serach');
 Route::post('/reserve_2','VanController@serach1');
+Route::post('/reserve_3','VanController@reserve_3');
+Route::get('/reserve_3','VanController@reserve_3');
 Route::get('/reserve_2','VanController@serach1');
 Route::get('/reserve','VanController@reserve_2');
+Route::post('/show_income_each','ReservationsController@show_income_each');
+Route::post('/show_income_month','ReservationsController@show_income_month');
+Route::get('/anony_reserve','ReservationsController@anony_reserve');
 Route::get('/twoway','VanController@twoway');
 
 Route::get('/main','VanController@main');

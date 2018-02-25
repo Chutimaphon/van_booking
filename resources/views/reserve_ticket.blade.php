@@ -77,7 +77,7 @@
   </div>
 <div class="col-md-2"></div>
   <div class="col-md-6">
-  <h2>เที่ยวรถ</h2>    
+  <h2>เลือกที่นั่งตามต้องการ</h2> <br><br>   
   <table class="table table-striped">
     <thead>
       <tr>
@@ -123,18 +123,30 @@
   </table>
   <br><br></div>
  
-     {{csrf_field()}}  
+     {{csrf_field()}} 
+     <input type="hidden" name="source" value="{{$carride->source}}">
+     <input type="hidden" name="endways" value="{{$carride->endways}}">
+     <input type="hidden" name="book_above" value="{{$book_above}}">
+     <input type="hidden" name="book_below" value="{{$book_below}}">
+     <input type="hidden" name="twoways" value="{{$twoways}}">
      <input type="hidden" name="datein" value="{{$datein}}"></input>
+     <input type="hidden" name="dateout" value="{{$dateout}}"></input>
      <input type="hidden" name="carrid_id" value="{{$carride->carrid_id}}">
      <input type="hidden" name="id_van" value="{{$id_van}}">
-     <input type="hidden" name="id" value="{{Auth::user()->id}}">
+     @if(!Auth::check())
+      <input type="hidden" name="id" value="-1">
+     @else
+      <input type="hidden" name="id" value="{{Auth::user()->id}}">
+     @endif
+     <input type="hidden" name="name" value="{{$name}}">
+     <input type="hidden" name="tel" value="{{$tel}}">
      <input type="hidden" name="pp" value="{{$pp}}">
      <input type="hidden" name="nn" value="{{$nn}}">
 
      <div class="row">
      <div class="col-md-8"></div>
      <div class="col-md-2">
-     <button type="submit" class="btn btn-success btn-lg btn-block btn-huge">จอง </button></div>
+     <button type="submit" class="btn btn-success btn-lg btn-block btn-huge">จอง </button><br><br><br><br></div>
      </div></div></div>
     </form></div>
 

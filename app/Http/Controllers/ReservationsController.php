@@ -25,8 +25,80 @@ class ReservationsController extends Controller
     // }
     
     public function index(Request $request)    {
-        $reservations = Reservation::where('id',Auth::user()->id)->orderBy('updated_at','desc')->get();
-        return view('reserve_1')->with('reservations',$reservations);
+        if(!Auth::check())
+          { 
+            $anony=true;
+          $name=Session::get('name');
+          if(Session::get('name')!=null)
+            $reservations = Reservation::where('name',Session::get('name'))->orderBy('updated_at','desc')->get();
+          else
+            $reservations=null;
+        }
+        else{
+          $anony=false;
+          $name=DB::table('users')->where('id',Auth::user()->id)->value('fname');
+          $reservations = Reservation::where('id',Auth::user()->id)->orderBy('updated_at','desc')->get();
+        }
+        return view('reserve_1')->with('reservations',$reservations)
+                                ->with('name',$name)
+                                ->with('anony',$anony);
+    }
+    public function show_income_each(Request $request)    {
+        $date =$request->get('date_each');
+        $all_point = DB::table('reservations')->where('date',$date)->get();
+        $points = array();
+        if(count($all_point)>0)
+        {
+          foreach ($all_point as $p) {
+           array_push($points,$p->id_point);
+          }
+        }
+        $data_each = array();
+        if(count($points)>0)
+        {
+          foreach ($points as $p) {
+            array_push($data_each,DB::table('points')->where('id_point',$p)->get()[0]);
+          }
+        }
+        $total_each = 0;
+        if(count($data_each)>0)
+        {
+          foreach ($data_each as $d) {
+            $total_each+=$d->cost;
+          }
+        }
+        return view('receipts')->with('date',$date)
+                                ->with('total_each',$total_each);
+    }
+    public function show_income_month(Request $request)    {
+        $date =$request->get('date_month');
+
+        $all_point = DB::table('reservations')->where('date','like',$date.'%')->get();
+        
+        $points = array();
+        if(count($all_point)>0)
+        {
+          foreach ($all_point as $p) {
+           array_push($points,$p->id_point);
+          }
+        }
+        $data_each = array();
+        if(count($points)>0)
+        {
+          foreach ($points as $p) {
+            array_push($data_each,DB::table('points')->where('id_point',$p)->get()[0]);
+          }
+        }
+        $total_month = 0;
+        if(count($data_each)>0)
+        {
+          foreach ($data_each as $d) {
+            $total_month+=$d->cost;
+          }
+        }
+        return view('receipts')->with('date_month',$date)
+                                ->with('total_month',$total_month);
+        
     }
     public function create()    {
         return view('reserve_ticket');
@@ -73,10 +145,11 @@ class ReservationsController extends Controller
         $appoint->update($request->all());
         return redirect('appoints');
     }*/
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
+        $name=$request->get('name');
         Reservation::destroy($id);
-        return redirect('reservations');
+        return redirect('reservations')->with( ['name' => $name] );
     }
     
    public function hitkohlanta()
@@ -184,8 +257,18 @@ class ReservationsController extends Controller
                           ->with('nn',$nn);
    }
    public function ticket(Request $request)    {
+
+
         $total = 0;
-        $reservations = Reservation::where('id',Auth::user()->id)->get();
+        if($request->get('name')!=null)
+        { $name=$request->get('name');
+          $reservations = Reservation::where('name',$request->get('name'))->get();
+        }
+        else
+        {
+          $name=null;
+          $reservations = Reservation::where('id',Auth::user()->id)->get();
+        }
         $cart = array();
         foreach ($reservations as $item) {
           $total+=DB::table('points')->where('id_point',$item->id_point)->get()[0]->cost;
@@ -199,8 +282,26 @@ class ReservationsController extends Controller
           
         // }
         return view('ticket')->with('reservations',$reservations)
-                             ->with('total',$total);
+                             ->with('total',$total)
+                             ->with('name',$name);
     }
+    public function anony_reserve(){
+    $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
+    $source = DB::table('carride_tbls')->distinct()->get(['source']);
+    $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
+    $pp =  "";
+    $nn =  "";
+    $cost =  "";
+    
+      $carride_tbls->setPath('carride_tbls');
+    return view('anony_reserve')->with('carride_tbls',$carride_tbls)
+                          ->with('source',$source)
+                          ->with('endways',$endways)
+                          ->with('cost',$cost)
+                          ->with('pp',$pp)
+                          ->with('nn',$nn)
+                          ->with('twoway',false);
+   }
 
    
 }

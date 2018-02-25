@@ -83,10 +83,10 @@
             <a href="reserve" class="btn btn-primary btn-lg btn-block btn-huge">จองตั๋ว</a>
         </div>
         <div class="col-md-3">
-            <a href="#" class="btn btn-primary btn-lg btn-block btn-huge">วิธีการจองและชำระเงิน</a>
+            <a href="stepreserve" class="btn btn-primary btn-lg btn-block btn-huge">วิธีการจอง</a>
         </div>
         <div class="col-md-3">
-            <a href="#" class="btn btn-primary btn-lg btn-block btn-huge">จุดขึ้นรถ</a>
+            <a href="#" class="btn btn-primary btn-lg btn-block btn-huge">ตรวจสอบประวัติการจอง</a>
         </div>
         <div class="col-md-3">
             <a href="checkstatus" class="btn btn-primary btn-lg btn-block btn-huge">ตรวจสถานะการจอง</a>

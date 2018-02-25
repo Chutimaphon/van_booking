@@ -1,63 +1,76 @@
-/* Carousel */
+/*
+-----------------------------------
+    Code snippet by @maridlcrmn
+    Credits images: www.unsplash.com
+-----------------------------------
+*/
 
-#quote-carousel {
-    padding: 0 10px 30px 10px;
-    margin-top: 30px;
-    /* Control buttons  */
-    /* Previous button  */
-    /* Next button  */
-    /* Changes the position of the indicators */
-    /* Changes the color of the indicators */
+#thumbnail-preview-indicators {
+  position: relative;
+  overflow: hidden;
 }
-#quote-carousel .carousel-control {
-    background: none;
-    color: #CACACA;
-    font-size: 2.3em;
-    text-shadow: none;
-    margin-top: 30px;
+#thumbnail-preview-indicators .slides .slide-1, 
+#thumbnail-preview-indicators .slides .slide-2,
+#thumbnail-preview-indicators .slides .slide-3 {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
-#quote-carousel .carousel-control.left {
-    left: -60px;
+    #thumbnail-preview-indicators,
+    #thumbnail-preview-indicators .slides,
+    #thumbnail-preview-indicators .slides .slide-1, 
+    #thumbnail-preview-indicators .slides .slide-2,
+    #thumbnail-preview-indicators .slides .slide-3 {
+      height: 600px;
+    }
+#thumbnail-preview-indicators .slides .slide-1 {
+  background-image: url(https://www.dlt.go.th/web-upload/m_banner/32/file_cdc2509cc96ef4c56fabc908de81d926.png); 
 }
-#quote-carousel .carousel-control.right {
-    right: -60px;
+#thumbnail-preview-indicators .slides .slide-2 {
+  background-image: url(https://www.matichon.co.th/wp-content/uploads/2017/03/201703231507345-20150622173355.jpg);
 }
-#quote-carousel .carousel-indicators {
-    right: 50%;
-    top: auto;
-    bottom: 0px;
-    margin-right: -19px;
+#thumbnail-preview-indicators .slides .slide-3 {
+  background-image: url(http://2.bp.blogspot.com/-DQolWUy_AOw/ULg8fCA1s9I/AAAAAAAAOIs/DTSWSsOfkD8/s1600/police1.gif);
 }
-#quote-carousel .carousel-indicators li {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-    cursor: pointer;
-    border: 4px solid #CCC;
-    border-radius: 50px;
-    opacity: 0.4;
-    overflow: hidden;
-    transition: all 0.4s;
+#thumbnail-preview-indicators .carousel-inner .item .carousel-caption {
+  top: 20%;
+  bottom: inherit;
 }
-#quote-carousel .carousel-indicators .active {
-    background: #333333;
-    width: 128px;
-    height: 128px;
-    border-radius: 100px;
-    border-color: #f33;
-    opacity: 1;
-    overflow: hidden;
+#thumbnail-preview-indicators .carousel-indicators li,
+#thumbnail-preview-indicators .carousel-indicators li.active {
+  position: relative;
+  width: 100px;
+  height: 8px;  
 }
-.carousel-inner {
-    min-height: 300px;
+#thumbnail-preview-indicators .carousel-indicators li > .thumbnail {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  display: none;
+  opacity: 0;
+  left: 50%;
+  margin-top: -80px;
+  margin-left: -50px;
 }
-.item blockquote {
-    border-left: none;
-    margin: 0;
+#thumbnail-preview-indicators .carousel-indicators li:hover > .thumbnail,
+#thumbnail-preview-indicators .carousel-indicators li.active > .thumbnail {
+  display: block;
+  opacity: .8;
 }
-.item blockquote p:before {
-    content: "\f10d";
-    font-family: 'Fontawesome';
-    float: left;
-    margin-right: 10px;
+#thumbnail-preview-indicators .carousel-indicators li.active > .thumbnail:hover{
+  opacity: 1;
+}
+@media screen and (max-width : 480px) {    
+    #thumbnail-preview-indicators .carousel-indicators li,
+    #thumbnail-preview-indicators .carousel-indicators li.active {
+      width: 50px;
+      height: 8px;
+      position: relative;
+    }
+    #thumbnail-preview-indicators .carousel-indicators li > .thumbnail {
+       width: 50px;
+       left: 50%;
+       margin-top: -50px;
+       margin-left: -25px;
+    }
 }

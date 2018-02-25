@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/buttonbig.css">
   <link rel="stylesheet" type="text/css" href="/css/picture.css">
   <link rel="stylesheet" type="text/css" href="css/we.css">
@@ -22,72 +25,75 @@
 <body>
 
 @include('navbar_1')
-<br><br>
+<br><br><br>
 
-<head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-</head>
-<div class="container">
-<div class="row">
-                    <div class="col-md-12" data-wow-delay="0.2s">
-                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-                            <!-- Bottom Carousel Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src="https://www.google.co.th/search?q=%E0%B8%81%E0%B8%A3%E0%B8%A1%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%99%E0%B8%AA%E0%B9%88%E0%B8%87%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%9A%E0%B8%81&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiX6dvno_3XAhVFpo8KHYoABKEQ_AUICygC&biw=1536&bih=735#imgdii=9ZGXiueTPO64ZM:&imgrc=ywi9fp4SmtJztM:" alt="">
-                                </li>
-                                <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg" alt="">
-                                </li>
-                                <li data-target="#quote-carousel" data-slide-to="2"><img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg" alt="">
-                                </li>
-                            </ol>
 
-                            <!-- Carousel Slides / Quotes -->
-                            <div class="carousel-inner text-center">
 
-                                <!-- Quote 1 -->
-                                <div class="item active">
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-
-                                                <h1>กรมการขนส่งทางบก</h1>
-                                                <a href="http://ins.dlt.go.th/cmpweb/"><h2>ร้องเรียนรถตู้โดยสาร</h2></a>
-                                                <h3><i class="fa fa-vcard" style="font-size:24px"></i> 1032 ถนนพหลโยธิน แขวงจอมพล เขตจตุจักร กรุงเทพมหานคร 10900 </h3>
-                                                <h3><i class="fa fa-phone" style="font-size:24px"></i>โทรศัพท์ (หมายเลขกลาง) 0-2271-8888
-                                                   <br>Call Center และศูนย์คุ้มครองผู้โดยสารสาธารณะ : โทรศัพท์ 1584</h3>
-                                                <br><br><br>
-                                            </div>
-                                        </div>
-                                </div><br><br><br><br><br><br>
-                                <!-- Quote 2 -->
-                                <div class="item">
-                                    <blockquote>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                                                <small>Someone famous</small>
-                                            </div>
-                                        </div>
-                                    </blockquote>
-                                </div>
-                                <!-- Quote 3 -->
-                                <div class="item">
-                                    <blockquote>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. .</p>
-                                                <small>Someone famous</small>
-                                            </div>
-                                        </div>
-                                    </blockquote>
-                                </div>
-                            </div>
-
-                            <!-- Carousel Buttons Next/Prev -->
-                            <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
-                            <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-                    </div>
+<div id="thumbnail-preview-indicators" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+           <ol class="carousel-indicators">
+            <li data-target="#thumbnail-preview-indicators" data-slide-to="0" class="active">
+              <div class="thumbnail">
+                <img class="img-responsive" src="https://www.dlt.go.th/web-upload/m_banner/32/file_cdc2509cc96ef4c56fabc908de81d926.png">
+              </div>
+            </li>
+            <li data-target="#thumbnail-preview-indicators" data-slide-to="1">
+            <div class="thumbnail">
+                <img class="img-responsive" src="https://www.matichon.co.th/wp-content/uploads/2017/03/201703231507345-20150622173355.jpg">
+              </div>
+            </li>
+            <li data-target="#thumbnail-preview-indicators" data-slide-to="2">
+            <div class="thumbnail">
+                <img class="img-responsive" src="http://2.bp.blogspot.com/-DQolWUy_AOw/ULg8fCA1s9I/AAAAAAAAOIs/DTSWSsOfkD8/s1600/police1.gif">
+              </div>
+            </li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item slides active">
+              <div class="slide-1"></div>
+              <div class="container">
+                <div class="carousel-caption">
+                   <div class="well">
+                  <h1><font color="black">กรมการขนส่งทางบก</font></h1>
+                  <h2><font color="black">ร้องเรียนรถตู้โดยสาร</font></h2>
+                  <h3><font color="black"><i class="fa fa-vcard" style="font-size:24px"></i> 1032 ถนนพหลโยธิน แขวงจอมพล เขตจตุจักร กรุงเทพมหานคร 10900</font></h3>
+                  <h3><font color="black"><i class="fa fa-phone" style="font-size:24px"></i>โทรศัพท์ (หมายเลขกลาง) 0-2271-8888</font></h3>
+                  </div>
                 </div>
-</div>
+              </div>
+            </div>
+            <div class="item slides">
+              <div class="slide-2"></div>
+              <div class="container">
+                <div class="carousel-caption">
+                 <div class="well">
+                  <h1><font color="black">เครือข่ายองค์กรผู้บริโภคภาคใต้</font></h1>
+                  <h2><font color="black">ร้องเรียนคนขับรถตู้โดยสารพูดจาไม่สุภาพ</font></h2>
+                  <h3><font color="black"><i class="fa fa-vcard" style="font-size:24px"></i> สถาบันการจัดการระบบสุขภาพภาคใต้ มหาวิทยาลัยสงขลานครินทร์ <br>ชั้น 10 อาคารศูนย์ทรัพยากรการเรียนรู้คุณหญิงหลงอรรถกวีสุนทร </font> </h3>
+                  <h3><font color="black"><i class="fa fa-phone" style="font-size:24px"></i> โทรศัพท์ 074-282902</font></h3>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="item slides">
+              <div class="slide-3"></div>
+              <div class="container">
+                <div class="carousel-caption">
+
+                  <div class="well">
+                  <h1><font color="black">สำนักงานตำรวจแห่งชาติ</font></h1>
+                  <h2><font color="black">เมื่อรู้สึกไม่ปลอดภัยในชีวิตและทรัพย์สิน</font></h2>
+                  <h3><font color="black"><i class="fa fa-vcard" style="font-size:24px"></i> ถนนพระราม 1 แขวงปทุมวัน เขตปทุมวัน กรุงเทพมหานคร 10330</font></h3>
+                  <h3><font color="black"><i class="fa fa-phone" style="font-size:24px"></i> สายด่วน 191</font></h3>
+                  </div>
+              </div>
+
+
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="left carousel-control" href="#thumbnail-preview-indicators" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+          <a class="right carousel-control" href="#thumbnail-preview-indicators" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+      </div> 

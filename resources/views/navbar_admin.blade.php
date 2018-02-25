@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="main_1">
                     <div class="form-inline">
-                    <img src="{{url('img/bookingvan.png')}}" width="38" height="38" alt=""> <b>Booking Van</b>
+                    <font color="orange"><i class="fa fa-truck fa-1x"></i></font> <b>Booking Van</b>
                     </div>
   </a>
     <ul class="nav navbar-nav">
@@ -11,6 +11,7 @@
       <li><a href="regis_driver">ข้อมูลคนขับรถ</a></li>
       <li><a href="regis_van">ข้อมูลรถ</a></li>
       <li><a href="regis_news">ข่าวสาร</a></li>
+      <li><a href="receipts">รายรับ</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
      <li class="dropdown">
