@@ -260,15 +260,21 @@ class VanController extends Controller
                           ->with('name',$name);
    }
 
-   public function main(){
-    $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
+   public function main(Request $request){
+    $NUM_PAGE = 10;
+    $carride_tbls = Carride_tbl::paginate($NUM_PAGE);
+    $page = $request->input('page');
+    $page = ($page !=null)?$page:1;
+
+
     $source = DB::table('carride_tbls')->distinct()->get(['source']);
     $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
     
-      $carride_tbls->setPath('carride_tbls');
     return view('main')->with('carride_tbls',$carride_tbls)
                           ->with('source',$source)
-                          ->with('endways',$endways);
+                          ->with('endways',$endways)
+                          ->with('page',$page)
+                          ->with('NUM_PAGE',$NUM_PAGE);
    }
 
    public function main_1(Request $request){
@@ -290,15 +296,21 @@ class VanController extends Controller
                           ->with('NUM_PAGE',$NUM_PAGE);
    }
 
-   public function main_admin(){
-    $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(25);
+   public function main_admin(Request $request){
+    $NUM_PAGE = 10;
+    $carride_tbls = Carride_tbl::paginate($NUM_PAGE);
+    $page = $request->input('page');
+    $page = ($page !=null)?$page:1;
+
+
     $source = DB::table('carride_tbls')->distinct()->get(['source']);
     $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
     
-      $carride_tbls->setPath('carride_tbls');
-    return view('main_admin')->with('carride_tbls',$carride_tbls)
+    return view('main_1')->with('carride_tbls',$carride_tbls)
                           ->with('source',$source)
-                          ->with('endways',$endways);
+                          ->with('endways',$endways)
+                          ->with('page',$page)
+                          ->with('NUM_PAGE',$NUM_PAGE);
    }
    public function twoway()
    {
@@ -323,6 +335,7 @@ class VanController extends Controller
 
    public function bookcar(Request $request)
    {
+    
 
       if($request->get('book_below')=="true")
        {

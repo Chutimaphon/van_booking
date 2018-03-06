@@ -30,14 +30,14 @@ class ReservationsController extends Controller
             $anony=true;
           $name=Session::get('name');
           if(Session::get('name')!=null)
-            $reservations = Reservation::where('name',Session::get('name'))->orderBy('updated_at','desc')->get();
+            $reservations = Reservation::where('name',Session::get('name'))->orderBy('updated_at','desc')->paginate(25);
           else
             $reservations=null;
         }
         else{
           $anony=false;
           $name=DB::table('users')->where('id',Auth::user()->id)->value('fname');
-          $reservations = Reservation::where('id',Auth::user()->id)->orderBy('updated_at','desc')->get();
+          $reservations = Reservation::where('id',Auth::user()->id)->orderBy('updated_at','desc')->paginate(25);
         }
         return view('reserve_1')->with('reservations',$reservations)
                                 ->with('name',$name)
@@ -176,7 +176,8 @@ class ReservationsController extends Controller
                           ->with('carride_tbls',$carride_tbls)
                           ->with('cost',$cost)
                           ->with('pp',$pp)
-                          ->with('nn',$nn);
+                          ->with('nn',$nn)
+                          ->with('twoway');
    }
 
    public function hitsurad()
@@ -202,7 +203,8 @@ class ReservationsController extends Controller
                           ->with('carride_tbls',$carride_tbls)
                           ->with('cost',$cost)
                           ->with('pp',$pp)
-                          ->with('nn',$nn);
+                          ->with('nn',$nn)
+                          ->with('twoway');
    }
 
    public function hitnakhon()
@@ -228,7 +230,8 @@ class ReservationsController extends Controller
                           ->with('carride_tbls',$carride_tbls)
                           ->with('cost',$cost)
                           ->with('pp',$pp)
-                          ->with('nn',$nn);
+                          ->with('nn',$nn)
+                          ->with('twoway');
    }
 
    public function hithatyai()
@@ -249,12 +252,13 @@ class ReservationsController extends Controller
     $pp =  "";
     $nn =  "";
     $cost =  "";
-    return view('reserve_selected')->with('source',$sourcep)
+    return view('reserve')->with('source',$sourcep)
                           ->with('endways',$endwaysp)
                           ->with('carride_tbls',$carride_tbls)
                           ->with('cost',$cost)
                           ->with('pp',$pp)
-                          ->with('nn',$nn);
+                          ->with('nn',$nn)
+                          ->with('twoway');
    }
    public function ticket(Request $request)    {
 

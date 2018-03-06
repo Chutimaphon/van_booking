@@ -84,7 +84,7 @@
                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                           <div class="panel-body">
                           <!-- tab content goes here -->
-                           <form action="hithatyai" method="POST">
+                           <form action="/hithatyai" method="POST">
                            {{csrf_field()}}
                            <button type="submit" class="btn btn-primary btn-lg btn-block btn-huge">จองตั๋ว</a>
                           <input type="hidden" name="source" value="ภูเก็ต"></input> 
