@@ -30,12 +30,13 @@
       <li><a href="vanroute">เส้นทางการเดินรถ</a></li>
       <li><a href="news">ข่าวสาร</a></li>
       <li><a href="we">ความช่วยเหลือ</a></li>
+      <li><a href="ticket">ตั๋ว</a></li>
       
     </ul>
     <ul class="nav navbar-nav navbar-right">
     @if(!Auth::guest())
       @if (Auth::user()->email=="nanping3856@gmail.com")
-        <li><a href="{{url('main_admin')}}" class="btn btn-info">Admin</a></li>
+        <li><a href="{{url('/main_admin')}}" class="btn btn-info">Admin</a></li>
       @endif
        <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user col-sm-2"></span>&nbsp;

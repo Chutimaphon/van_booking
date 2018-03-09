@@ -49,6 +49,10 @@
               <a href="#tab_default_5" data-toggle="tab">
               Step 5 </a>
             </li>
+            <li>
+              <a href="#tab_default_6" data-toggle="tab">
+              Step 6 </a>
+            </li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_default_1">
@@ -57,7 +61,7 @@
             <center>
             <div class="thumbnail">
                   <div class="boxes">
-            <img src="img/pic1.png" width="1125" height="700">
+            <img src="img/pic1.PNG" width="1100" height="700">
            </div></div> </center> 
                            
             </div>
@@ -67,7 +71,7 @@
              <center>
              <div class="thumbnail">
                   <div class="boxes">
-             <img src="img/pic2.png" width="1125" height="600">
+             <img src="img/pic2.PNG" width="1100" height="600">
              </div></div></center>
               
             </div>
@@ -77,7 +81,7 @@
              <center>
              <div class="thumbnail">
                   <div class="boxes">
-             <img src="img/pic3.png" width="1125" height="600">
+             <img src="img/pic3.PNG" width="1100" height="600">
              </div></div></center>
             
             </div>
@@ -88,13 +92,13 @@
              <center>
              <div class="thumbnail">
                   <div class="boxes">
-             <img src="img/pic4.png" width="1125" height="700">
+             <img src="img/pic4.PNG" width="1100" height="700">
              </div></div></center><br>
              <h4>ถ้าแสดง <span style="color:red;" class="glyphicon glyphicon-remove"></span> หมายความว่า ที่นั่งนั้นมีการจองแล้ว </h4><br>
              <center>
              <div class="thumbnail">
                   <div class="boxes">
-             <img src="img/pic5.png" width="1125" height="600">
+             <img src="img/pic5.PNG" width="1100" height="600">
              </div></div></center><br>
             
             </div>
@@ -105,9 +109,20 @@
              <center>
              <div class="thumbnail">
                   <div class="boxes">
-             <img src="img/pic6.png" width="1125" height="380">
+             <img src="img/pic6.PNG" width="1100" height="380">
              </div></div></center>
+
+             </div>
             
+            <div class="tab-pane" id="tab_default_6">
+              <h3><font color="red"> Step 6 </font></h3><br>
+             <h4>หาต้องการชำระเงิน ให้กดปุ่มเลือกชำระเงิน แล้วก็จะขึ้นหน้าตั๋วแสดงรายละเอียดการจอง และจำนวนเงินที่ต้องชำระ</h4><br>
+             <center>
+             <div class="thumbnail">
+                  <div class="boxes">
+             <img src="img/pic7.PNG" width="1100" height="600">
+             </div></div></center>
+
             </div>
           </div>
         </div>

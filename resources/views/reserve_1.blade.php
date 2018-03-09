@@ -62,6 +62,8 @@
 </div>
 </div><br><br>
 <div style="overflow-x:auto;">
+
+<?php $index = 0 ?>
 <table class="table table-bordered">
           <thead class="thead-inverse">
            <tr>
@@ -80,8 +82,14 @@
 @foreach( $reservations as  $index => $item )
 		<tbody>
         <tr> 
-		<td>{{$index+1}}</td>
-		<td>{{$name}}</td></td>
+		<td>{{$NUM_PAGE*($page-1) + $index+1}}</td>
+    @if($item->id > 0)
+		<td><?php 
+    echo (DB::table('users')->where('id',$item->id)->value('fname'));
+    ?></td>
+    @elseif ($item->id < 0)
+    <td>{{$item->name}}</td>
+    @endif
 		<td><?php 
 		echo (DB::table('carride_tbls')->where('carrid_id',$item->carrid_id)->value('source'));
 		?></td>
@@ -116,6 +124,9 @@
 @endif
 </table>
 </div>
+<center>
+{{ $reservations->links() }} 
+</center>
 <br>
 @if ( !Auth::guest() )
 	<a href="{{url('reserve')}}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add List </a>
