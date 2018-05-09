@@ -73,11 +73,13 @@
   <div class="row">
   <div class="col-md-4">
   <br><br><br>
-  <img src="img/van1.png">
+  <img src="img/van1.PNG"width="100%" height="100%">
   </div>
 <div class="col-md-2"></div>
   <div class="col-md-6">
-  <h2>เลือกที่นั่งตามต้องการ</h2> <br><br>   
+  <h2>เลือกที่นั่งตามต้องการ</h2> <br>
+  <div class="alert alert-danger"><h4>วันที่ออกเดินทาง : {{$datein}} </h4>  
+  <h4>เวลาที่ออกรถ : {{$time_out}} </h4></div>  <br>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -85,16 +87,9 @@
         <th>เลขที่นั่ง</th>
         <th>ต้นทาง</th>
         <th>ปลายทาง</th>
-        <th>เวลาที่รถออก</th>
       </tr>
       <tbody>
-      @if(count($seat)>0)
-  <div class="alert alert-danger"><strong>ที่นั่ง
-      @foreach($seat as $a)
-     {{$a->seat}}  
-      @endforeach  มีคนจองแล้วค่ะ </strong>
-  </div>
-  @endif
+      
     <form action="{{url('bookcar')}}" method="post">
       @for($i=1;$i<=$van->seat;$i++)
       <tr>
@@ -114,7 +109,6 @@
         <th>{{$i}}</th>
         <th>{{$carride->source}}</th>
         <th>{{$carride->endways}}</th>
-        <th>{{$time_out}}</th>
         <input type="hidden" name="time_out" value="{{$time_out}}"></input>
       </tr>
       @endfor 

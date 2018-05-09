@@ -13,34 +13,33 @@
 <div class="container">
  <div class="row">
   <div class="col-md-4">
-  <form>
-    <div class="form-group">
-      <label for="sel1">ต้นทาง</label>
-      <select class="form-control" id="sel1">
-        <option>ภูเก็ต</option>
-        <option>พังงา</option>
-        <option>กระบี่</option>
-        <option>สุราษธานี</option>
-        <option>นครศรีธรรมราช</option>
-      </select>
-      <br>
-      <label for="sel1">ปลายทาง</label>
-      <select class="form-control" id="sel1">
-        <option>ภูเก็ต</option>
-        <option>พังงา</option>
-        <option>กระบี่</option>
-        <option>สุราษธานี</option>
-        <option>นครศรีธรรมราช</option>
-      </select>
-      <br>
-      <label for="sel1">วันที่ออกเดินทาง</label>
-      <input class="form-control" type="date"></input>
-    </div>
-  </form>
-  <button id="search" name="search" class="btn btn-info">serch</button>
-</div>
-</div>
-</div>
+    <form>
+      <div class="form-group">
+        <label for="sel1">ต้นทาง</label>
+        <select class="form-control" id="sel1">
+            <option>ภูเก็ต</option>
+            <option>พังงา</option>
+            <option>กระบี่</option>
+            <option>สุราษธานี</option>
+            <option>นครศรีธรรมราช</option>
+        </select><br>
 
+        <label for="sel1">ปลายทาง</label>
+        <select class="form-control" id="sel1">
+            <option>ภูเก็ต</option>
+            <option>พังงา</option>
+            <option>กระบี่</option>
+            <option>สุราษธานี</option>
+            <option>นครศรีธรรมราช</option>
+        </select><br>
+
+        <label for="sel1">วันที่ออกเดินทาง</label>
+          <input class="form-control" type="date"></input>
+      </div>
+    </form>
+          <button id="search" name="search" class="btn btn-info">serch</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -31,23 +31,7 @@
 
 <div id="thumbnail-preview-indicators" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
-           <ol class="carousel-indicators">
-            <li data-target="#thumbnail-preview-indicators" data-slide-to="0" class="active">
-              <div class="thumbnail">
-                <img class="img-responsive" src="https://www.dlt.go.th/web-upload/m_banner/32/file_cdc2509cc96ef4c56fabc908de81d926.png">
-              </div>
-            </li>
-            <li data-target="#thumbnail-preview-indicators" data-slide-to="1">
-            <div class="thumbnail">
-                <img class="img-responsive" src="https://www.matichon.co.th/wp-content/uploads/2017/03/201703231507345-20150622173355.jpg">
-              </div>
-            </li>
-            <li data-target="#thumbnail-preview-indicators" data-slide-to="2">
-            <div class="thumbnail">
-                <img class="img-responsive" src="http://2.bp.blogspot.com/-DQolWUy_AOw/ULg8fCA1s9I/AAAAAAAAOIs/DTSWSsOfkD8/s1600/police1.gif">
-              </div>
-            </li>
-          </ol>
+          
           <div class="carousel-inner">
             <div class="item slides active">
               <div class="slide-1"></div>

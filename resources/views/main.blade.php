@@ -25,60 +25,54 @@
 <div class="container">
  <div class="row">
   <div class="col-md-4">
-  <form method="post" action="{{url('serach')}}">
-  {{csrf_field()}}
-  <h2>เที่ยวรถที่ต้องการเดินทาง</h2>
-    <div class="form-group">
-      <label for="sel1">ต้นทาง</label>
-      <select class="form-control" name="source">
-      @foreach($source as $s)
-        <option value={{$s->source}} >{{$s->source}}</option>
-      @endforeach
-      </select>
-      <br>
-      <label for="sel1">ปลายทาง</label>
-      <select class="form-control" name="endways">
-       @foreach($endways as $e)
-        <option value={{$e->endways}} >{{$e->endways}}</option>
-      @endforeach
-      </select>
-      <br>
-    </div>
+    <form method="post" action="{{url('serach')}}">
+        {{csrf_field()}}
+    <h2>เที่ยวรถที่ต้องการเดินทาง</h2>
+      <div class="form-group">
+        <label for="sel1">ต้นทาง</label>
+          <select class="form-control" name="source">
+            @foreach($source as $s)
+              <option value={{$s->source}} >{{$s->source}}</option>
+            @endforeach
+          </select><br>
+        <label for="sel1">ปลายทาง</label>
+          <select class="form-control" name="endways">
+            @foreach($endways as $e)
+              <option value={{$e->endways}} >{{$e->endways}}</option>
+            @endforeach
+          </select><br>
+      </div>
   <button id="submit" name="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> Search</button>
-   </form>
-</div>
+    </form>
+  </div>
   <div class="col-md-5">
   <h2>เที่ยวรถ</h2>         
   <table class="table table-striped">
     <thead>
-      <tr>
-        
+      <tr> 
         <th>ต้นทาง</th>
         <th>ปลายทาง</th>
         <th>เวลาที่รถออก</th>
       </tr>
-      <tbody>
-    
+    <tbody>
       @foreach($carride_tbls as $c)
-      <tr>   
-       
-       <td>{{$c->source}}</td>
-       <td>{{$c->endways}}</td>
-      <td>{{$c->time_out}}</td>
-      </tr> 
+        <tr>   
+          <td>{{$c->source}}</td>
+          <td>{{$c->endways}}</td>
+          <td>{{$c->time_out}}</td>
+        </tr> 
       @endforeach
-  
     </tbody>
     </thead>
   </table>
-    </fieldset>
+</fieldset>
     {{ $carride_tbls->links() }}
-</div>
-</div>
+    </div>
+  </div>
 </div>
  <hr>
     <div class="container">
-    <div class="row">
+      <div class="row">
         <div class="col-md-3">
             <a href="reserve" class="btn btn-primary btn-lg btn-block btn-huge">จองตั๋ว</a>
         </div>
@@ -88,34 +82,35 @@
         <div class="col-md-3">
             <a href="#" class="btn btn-primary btn-lg btn-block btn-huge">ตรวจสอบประวัติการจอง</a>
         </div>
-        <div class="col-md-3">
-            <a href="checkstatus" class="btn btn-primary btn-lg btn-block btn-huge">ตรวจสถานะการจอง</a>
-        </div></div>
-    </div><br><br>
-    <h3><center>เส้นทางยอดนิยม</center></h3><br><br>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>ภูเก็ต - เกาะลันตา</h4>
-                    <p>ราคาเริ่มต้นที่ 160 บาท</p>
-                    <a href="hitkohlanta" class="label label-default" rel="tooltip" title="Search Now">ค้นหา</a></p>
-                </div>
-                <img src="http://www.manager.co.th/asp-bin/Image.aspx?ID=3031506" alt="..." width="100%" height="100%">
-            </div>
+         <div class="col-md-3">
+            <a href="checkstatus" class="btn btn-primary btn-lg btn-block btn-huge">เช็คสถานะการจอง</a>
+        </div>
       </div>
+    </div><br><br>
+        <h3><center>เส้นทางยอดนิยม</center></h3><br><br>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">            
+          <div class="thumbnail">
+            <div class="caption">
+              <h4>ภูเก็ต - เกาะลันตา</h4>
+              <p>ราคาเริ่มต้นที่ 160 บาท</p>
+                <a href="hitkohlanta" class="label label-default" rel="tooltip" title="Search Now">ค้นหา</a></p>
+            </div>
+                <img src="img/pic8.jpg" alt="..." width="100%" height="100%">
+          </div>
+        </div>
       
         <div class="col-md-3">            
-            <div class="thumbnail">
-                <div class="caption">
-                    <h4>ภูเก็ต - เขื่อนรัชชประภา</h4>
-                    <p>ราคาเริ่มต้นที่ 170 บาท</p>
-                    <a href="hitsurad" class="label label-default" rel="tooltip" title="Search Now">ค้นหา</a></p>
-                </div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Limestone_rocks_in_the_Khao_Sok_National_Park.JPG" alt="..." width="100%" height="100%">
+          <div class="thumbnail">
+            <div class="caption">
+              <h4>ภูเก็ต - เขื่อนรัชชประภา</h4>
+                <p>ราคาเริ่มต้นที่ 170 บาท</p>
+                  <a href="hitsurad" class="label label-default" rel="tooltip" title="Search Now">ค้นหา</a></p>
             </div>
-      </div>
+                  <img src="img/pic9.JPG" alt="..." width="100%" height="100%">
+          </div>
+        </div>
 
         <div class="col-md-3">            
             <div class="thumbnail">
@@ -124,7 +119,7 @@
                     <p>ราคาเริ่มต้นที่ 350 บาท</p>
                     <a href="hitnakhon" class="label label-default" rel="tooltip" title="Search Now">ค้นหา</a></p>
                 </div>
-                <img src="http://www.nationmultimedia.com/img/news/2013/06/21/30208818/30208818-01.jpg" alt="..."width="100%" height="100%">
+                <img src="img/pic10.jpg" alt="..."width="100%" height="100%">
             </div>
       </div>
 
@@ -135,7 +130,7 @@
                     <p>ราคาเริ่มต้นที่ 260 บาท</p>
                     <a href="hithatyai" class="label label-default" rel="tooltip" title="Search Now">ค้นหา</a></p>
                 </div>
-                <img src="http://cdn.airportthai.co.th/uploads/profiles/0000000004/filemanager/images/%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%81%E0%B8%B4%E0%B8%A1%E0%B8%AB%E0%B8%A2%E0%B8%87.jpg" alt="...">
+                <img src="img/pic11.jpg" alt="..."width="100%" height="100%">
             </div>
       </div>        
         

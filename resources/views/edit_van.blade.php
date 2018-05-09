@@ -19,37 +19,36 @@
 @include('navbar_admin')
 <form class="form-horizontal" action="{{url('updatevan')}}" method="POST" role="form">
                     {!! csrf_field() !!}
-                    <fieldset>
-
+<fieldset>
 <div class="container">
-<div class="row">
-  <div class="col-md-4">
-  <h2>บันทึกรถตู้ประจำทาง</h2>
-  <form>
-     <div class="form-group">
-      <label for="inputdefault">เลขทะเบียนรถ</label>
-      <input class="form-control" name = "id_van" id="inputdefault" type="text" value="{{$van_tbls->id_van}}">
-    </div>
-    <div class="form-group">
-      <label for="inputdefault">ยี่ห้อรถ</label>
-      <input class="form-control" name = "brand" id="inputdefault" type="text" value="{{$van_tbls->brand}}">
-    </div>
-    <div class="form-group">
-      <label for="inputdefault">จำนวนที่นั่งภายในรถ</label>
-      <input class="form-control" name = "seat" id="inputdefault" type="text" value="{{$van_tbls->seat}}">
-    </div>
-    <div class="form-group">
-      <label for="sel1">ช่องที่จอดรถ</label>
-      <input class="form-control" name = "parking_box"id="inputdefault" type="text" value="{{$van_tbls->parking_box}}">
-    </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>บันทึกรถตู้ประจำทาง</h2>
+    <form>
+      <div class="form-group">
+          <label for="inputdefault">เลขทะเบียนรถ</label>
+          <input class="form-control" name = "id_van" id="inputdefault" type="text" value="{{$van_tbls->id_van}}">
+      </div>
+      <div class="form-group">
+          <label for="inputdefault">ยี่ห้อรถ</label>
+          <input class="form-control" name = "brand" id="inputdefault" type="text" value="{{$van_tbls->brand}}">
+      </div>
+      <div class="form-group">
+          <label for="inputdefault">จำนวนที่นั่งภายในรถ</label>
+          <input class="form-control" name = "seat" id="inputdefault" type="text" value="{{$van_tbls->seat}}">
+      </div>
+      <div class="form-group">
+          <label for="sel1">ช่องที่จอดรถ</label>
+          <input class="form-control" name = "parking_box"id="inputdefault" type="text" value="{{$van_tbls->parking_box}}">
+      </div>
     <input type="hidden" name="id" value="{{$van_tbls->id}}">
     <input type="submit" id="submit" name="submit" class="btn btn-success">
-</div>
-</div></div><br><br>
-  </fieldset>
+    </div>
+  </div>
+</div><br><br>
+</fieldset>
 </div>
 </form>
 </body>
 </html>
-</body>
-</html>
+

@@ -8,9 +8,11 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="main_admin"><span class="glyphicon glyphicon-home"></span> Home</a></li>
       <li><a href="regis_carride">ข้อมูลเที่ยวรถ</a></li>
+      <li><a href="regis_point">ข้อมูลจุดขึ้นรถ</a></li>
       <li><a href="regis_driver">ข้อมูลคนขับรถ</a></li>
       <li><a href="regis_van">ข้อมูลรถ</a></li>
-      <li><a href="regis_news">ข่าวสาร</a></li>
+      <li><a href="regis_news">ข้อมูลข่าวสาร</a></li>
+      <li><a href="regis_pointticket">ข้อมูลจุดจำหน่ายตั๋ว</a></li>
       <li><a href="receipts">รายรับ</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

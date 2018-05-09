@@ -89,12 +89,12 @@
                         <tr>
                             <td>
                                 <?php 
-                                    echo (DB::table('carride_tbls')->where('carrid_id',$item->carrid_id)->value('source'));
+                                    echo (DB::table('points')->where('id_point',$item->id_point)->value('psource'));
                                 ?>
                             </td>
                             <td>
                                 <?php 
-                                    echo (DB::table('carride_tbls')->where('carrid_id',$item->carrid_id)->value('endways'));
+                                    echo (DB::table('points')->where('id_point',$item->id_point)->value('pendway'));
                                 ?>
                             </td>
                             <td>
@@ -126,22 +126,69 @@
                         </tr>
                         @endforeach
                         <tr>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td class="text-center"><h2>ราคารวม : </h2></td>
+                          
+                           <td class="text-center" colspan="7" ><h2>ราคารวม : </h2></td>
                            <td><br>{{$total}} .-</td>
                         </tr>
                     </tbody>
                 
                 </table>
             </div>
-			
-			
-			
-        </div>    
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+<div id="paypal-button-container"></div>
+
+<script>
+
+    // Render the PayPal button
+
+    paypal.Button.render({
+
+        // Set your environment
+
+        env: 'sandbox', // sandbox | production
+
+        // Specify the style of the button
+
+        style: {
+            label: 'paypal',
+            size:  'medium',    // small | medium | large | responsive
+            shape: 'rect',     // pill | rect
+            color: 'blue',     // gold | blue | silver | black
+            tagline: false    
+        },
+
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+        client: {
+            sandbox:    'ASxjVWtSXdiNpdJQgRz7VA7glEkgXDC1Rj01NybqkQ0a8PyBJsoxpK8r58II-lqT-aO5eKlZEImbWMxJ',
+        },
+        commit: true,
+        payment: function(data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: {{$total}}, currency: 'THB' }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+                window.alert('Payment Complete!');
+                window.location.href = "/laravel54/public/success";
+            });
+        }
+
+    }, '#paypal-button-container');
+
+</script>
+   <br><br>	
+</div>    
 	</div>
 

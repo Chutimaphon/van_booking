@@ -7,7 +7,7 @@
     <nav class="navbar navbar-default">
   <div class="container-fluid">
 
-  <a class="navbar-brand" href="main_1">
+  <a class="navbar-brand" href="{{url('/')}}/main_1">
                     <div class="form-inline">
                     <font color="orange"><i class="fa fa-truck fa-1x"></i></font> <b>Booking Van</b>
                     </div>
@@ -15,22 +15,22 @@
    
    
     <ul class="nav navbar-nav">
-      <li class="active"><a href="main_1"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+      <li class="active"><a href="{{url('/')}}/main_1"><span class="glyphicon glyphicon-home"></span> Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">จุดจำหน่ายตั๋ว <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="phuket">ภูเก็ต</a></li>
-          <li><a href="pangnga">พังงา</a></li>
-          <li><a href="krabi">กระบี่</a></li>
-          <li><a href="surad">สุราษฎร์ธานี</a></li>
-          <li><a href="nakhon">นครศรีธรรมราช</a></li>
-          <li><a href="hatyai">หาดใหญ่</a></li>
-          <li><a href="kohlanta">เกาะลันตา</a></li>
+        <?php
+         $pointtickets = DB::table('pointtickets')->get();
+        ?>
+        @foreach($pointtickets as $point)
+          
+          <li><a href="{{url('/')}}/pointticket/{{$point->id}}"><?php echo substr($point->topic ,42) ?></a></li>
+        @endforeach
         </ul>
       </li>
-      <li><a href="vanroute">เส้นทางการเดินรถ</a></li>
-      <li><a href="news">ข่าวสาร</a></li>
-      <li><a href="we">ความช่วยเหลือ</a></li>
-      <li><a href="ticket">ตั๋ว</a></li>
+      <li><a href="{{url('/')}}/vanroute">เส้นทางการเดินรถ</a></li>
+      <li><a href="{{url('/')}}/news">ข่าวสาร</a></li>
+      <li><a href="{{url('/')}}/we">ความช่วยเหลือ</a></li>
+      <li><a href="{{url('/')}}/ticket">ตั๋ว</a></li>
       
     </ul>
     <ul class="nav navbar-nav navbar-right">

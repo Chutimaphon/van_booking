@@ -75,42 +75,62 @@
            <th>วันที่ออกเดินทาง</th>
            <th>ที่นั่ง</th>
            <th>ราคา</th>
-           <th></th>
+           <th>สถานะ</th>
            </tr>
           </thead>
           @if($reservations!=null)
 @foreach( $reservations as  $index => $item )
 		<tbody>
-        <tr> 
-		<td>{{$NUM_PAGE*($page-1) + $index+1}}</td>
-    @if($item->id > 0)
-		<td><?php 
-    echo (DB::table('users')->where('id',$item->id)->value('fname'));
-    ?></td>
-    @elseif ($item->id < 0)
-    <td>{{$item->name}}</td>
-    @endif
-		<td><?php 
-		echo (DB::table('carride_tbls')->where('carrid_id',$item->carrid_id)->value('source'));
-		?></td>
-		<td><?php 
-		echo (DB::table('carride_tbls')->where('carrid_id',$item->carrid_id)->value('endways'));
-		?></td></td>
-		<td>{{$item->time_out}}</td>
-		<td>{{$item->date}}</td>
-		<td>{{$item->seat}}</td>
-		<td><?php 
-		echo (DB::table('points')->where('id_point',$item->id_point)->value('cost'));
-		?></td></td>
-		@can('show',$item)
-			<form method="post" action="reservations/{{$item->id_res}}" class="form-inline">
-				<td><input type="hidden" name="_method" value="Delete">
-        <input type="hidden" name="name" value="{{$name}}">
-				<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Cancel</button> 
-				{{csrf_field()}}
-			</form>
+        <tr> <td>{{$NUM_PAGE*($page-1) + $index+1}}</td>
+    @can('show',$item)
+  		
+      @if($item->id > 0)
+  		<td><?php 
+      echo (DB::table('users')->where('id',$item->id)->value('fname'));
+      ?></td>
+      @elseif ($item->id < 0)
+      <td>{{$item->name}}</td>
+      @endif
+  		<td><?php 
+  		echo (DB::table('points')->where('id_point',$item->id_point)->value('psource'));
+  		?></td>
+  		<td><?php 
+  		echo (DB::table('points')->where('id_point',$item->id_point)->value('pendway'));
+  		?></td></td>
+  		<td>{{$item->time_out}}</td>
+  		<td>{{$item->date}}</td>
+  		<td>{{$item->seat}}</td>
+  		<td><?php 
+  		echo (DB::table('points')->where('id_point',$item->id_point)->value('cost'));
+  		?></td></td>
+  			<form method="post" action="reservations/{{$item->id_res}}" class="form-inline">
+  				<td><input type="hidden" name="_method" value="Delete">
+          <input type="hidden" name="name" value="{{$name}}">
+  				<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Cancel</button> 
+  				{{csrf_field()}}
+  			</form>
 		@endcan
     @if($anony)
+      <td>{{$NUM_PAGE*($page-1) + $index+1}}</td>
+      @if($item->id > 0)
+      <td><?php 
+      echo (DB::table('users')->where('id',$item->id)->value('fname'));
+      ?></td>
+      @elseif ($item->id < 0)
+      <td>{{$item->name}}</td>
+      @endif
+      <td><?php 
+      echo (DB::table('carride_tbls')->where('carrid_id',$item->carrid_id)->value('source'));
+      ?></td>
+      <td><?php 
+      echo (DB::table('carride_tbls')->where('carrid_id',$item->carrid_id)->value('endways'));
+      ?></td></td>
+      <td>{{$item->time_out}}</td>
+      <td>{{$item->date}}</td>
+      <td>{{$item->seat}}</td>
+      <td><?php 
+      echo (DB::table('points')->where('id_point',$item->id_point)->value('cost'));
+      ?></td></td>
       <form method="post" action="reservations/{{$item->id_res}}" class="form-inline">
         <td><input type="hidden" name="_method" value="Delete">
         <input type="hidden" name="name" value="{{$name}}">

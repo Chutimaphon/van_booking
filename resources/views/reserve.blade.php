@@ -125,9 +125,9 @@ var app = angular.module('app', [], function ($interpolateProvider) {
 <div class="col-md-4">
    <h2>เที่ยวรถที่ต้องการเดินทาง</h2> <br><br></div></div></div>
 
-
 <div class="container">
 <div class="row">
+<div class="alert alert-danger"><strong><center>หมายเหตุ!! ผู้โดยสารสามารถพกพาสัมภาระมาได้ไม่เกิน 5 กิโลกรัม </center></strong></div><br>
 <div class="col-md-4"></div>
         <div class="col-md-2">
          @if($twoway)
@@ -147,11 +147,24 @@ var app = angular.module('app', [], function ($interpolateProvider) {
         </div></div><br><br>
     
 <div class="container">
+@if (count($errors) > 0)   
+<div class="row">
+
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+  <div class="alert alert-danger">
+      {{$errors}}
+  </div>
+  </div>
+  <div class="col-md-3"></div>
+
+</div>  
+@endif
 <div class="row">
 <div class="col-md-3"></div>
 <div class="col-md-6">
       @if(!Auth::check())
-          <label for="name">ชื่อผู้จอง : </label><input type="text" name="name" id="date" class="form-control" >
+          <label for="name">ชื่อผู้จอง : </label><input type="text" name="name"  id="date" class="form-control" >
           <label for="name">เบอร์โทรศัพท์ผู้จอง : </label><input type="text" name="tel" class="input-medium bfh-phone form-control" data-format="dd-dddd-dddd">
       @endif
      <label for="sel1">ต้นทาง :</label>

@@ -9,13 +9,13 @@
       <li class="active"><a href="main"><span class="glyphicon glyphicon-home"></span> Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">จุดจำหน่ายตั๋ว <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="phuket">ภูเก็ต</a></li>
-          <li><a href="pangnga">พังงา</a></li>
-          <li><a href="krabi">กระบี่</a></li>
-          <li><a href="surad">สุราษธานี</a></li>
-          <li><a href="nakhon">นครศรีธรรมราช</a></li>
-          <li><a href="hatyai">หาดใหญ่</a></li>
-          <li><a href="kohlanta">เกาะลันตา</a></li>
+        <?php
+         $pointtickets = DB::table('pointtickets')->get();
+        ?>
+        @foreach($pointtickets as $point)
+          
+          <li><a href="{{url('/')}}/pointticket/{{$point->id}}"><?php echo substr($point->topic ,42) ?></a></li>
+        @endforeach
         </ul>
       </li>
       <li><a href="vanroute">เส้นทางการเดินรถ</a></li>

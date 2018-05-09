@@ -107,16 +107,16 @@
                         <div class="tab-featured-image">
                             <div class="tab-content">
                                 <div class="tab-pane  in active" id="tab1">
-                                        <img src="http://thailandtopvote.com/wp-content/uploads/2017/03/%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%98%E0%B8%B2%E0%B8%95%E0%B8%B8-1.jpg" width="100%" height="100%" alt="tab1" class="img img-responsive">
+                                        <img src="img/pic18.jpg" width="100%" height="100%" alt="tab1" class="img img-responsive">
                                 </div>
                                 <div class="tab-pane " id="tab2">
                                     
-                                        <img src="http://www.konnakhon.com/album/1404090812.jpg"width="100%" height="100%">
+                                        <img src="img/pic19.jpg"width="100%" height="100%">
                                     
                                 </div>
                                 <div class="tab-pane fade" id="tab3">
                                       
-                                        <img src="https://www.khaosod.co.th/upload/files/1469590168_4.JPG"width="100%" height="100%">
+                                        <img src="img/pic20.jpg"width="100%" height="100%">
                                 </div>
                             </div>
                         </div>
@@ -131,4 +131,4 @@
     </div> <!--/ .row -->
 </div> <!-- end sidetab container -->
 <br><br>
-<marquee direction="left"><img src="http://diarylove.com/uploads/90/ov2.jpg" width="10%" height="10%"></marquee>
+<marquee direction="left"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Stork_with_new-born_child.png" width="10%" height="10%"></marquee>

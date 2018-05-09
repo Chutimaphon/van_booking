@@ -17,7 +17,7 @@ use App\Van_tbl;
 use App\Carride_tbl;
 use App\Reservation;
 use App\Points;
-
+use DateTime;
 class VanController extends Controller
 {
     public function regis_van()
@@ -41,8 +41,10 @@ class VanController extends Controller
    }
   public function reserve_ticket(Request $request)
      {
+
           $tel=$request->get('tel');
           $name=$request->get('name');
+          $email=$request->get('email');
           $pp = $request->get('pp');
           $nn = $request->get('nn');
           $cost = $request->get('cost');
@@ -175,8 +177,10 @@ class VanController extends Controller
    }
 
    public function serach1(Request $request){
-        $name=$request->get('name');
-        $tel=$request->get('tel');
+      $name=$request->get('name');
+      $tel=$request->get('tel');
+      $email=$request->get('email');
+
       $pp = $request->get('psource');
       $nn = $request->get('pendway');
       
@@ -192,8 +196,15 @@ class VanController extends Controller
      $carride_tbls = DB::table('carride_tbls')->where('source', 'like',$source)
                                               ->where('endways', 'like',$endways)->get();
                                               
-      $source = DB::table('carride_tbls')->distinct()->get(['source']);
+    $source = DB::table('carride_tbls')->distinct()->get(['source']);
     $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
+    $timezone = new DateTime('Asia/Bangkok');
+    $timezone_date = $timezone->format('Y-m-d');
+    $date_tz = strtotime($timezone_date);
+    $date_rs = strtotime($datein);
+    if($date_rs < $date_tz){
+        return back()->with('errors','พ้นช่วงเวลานั้นมาแล้ว ขณะนี้วันที่'.' '.$timezone_date);       
+    }
      return view('reserve_2')->with('carride_tbls',$carride_tbls)
                           ->with('source',$source)
                           ->with('endways',$endways)
@@ -204,7 +215,8 @@ class VanController extends Controller
                           ->with('datein',$datein)
                           ->with('dateout',$dateout)
                           ->with('name',$name)
-                          ->with('tel',$tel);
+                          ->with('tel',$tel)
+                          ->with('email',$email);
 
    }
    public function reserve_2(){
@@ -228,6 +240,7 @@ class VanController extends Controller
     $pp = $request->get('psource');
       $nn = $request->get('pendway');
        $name=$request->get('name');
+       $tel=$request->get('tel');
       $cost = DB::table('points')->where('psource','like','%'.$pp.'%')
                                  ->where('pendway','like','%'.$nn.'%')
                                  ->value('cost');
@@ -244,7 +257,13 @@ class VanController extends Controller
                                               
       $source = DB::table('carride_tbls')->distinct()->get(['source']);
     $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
-
+    $timezone = new DateTime('Asia/Bangkok');
+    $timezone_date = $timezone->format('Y-m-d');
+    $date_tz = strtotime($timezone_date);
+    $date_rs = strtotime($datein);
+    if($date_rs < $date_tz){
+        return back()->with('errors','พ้นช่วงเวลานั้นมาแล้ว ขณะนี้วันที่'.' '.$timezone_date);       
+    }
      return view('reserve_3')->with('carride_tbls',$carride_tbls)
                           ->with('carride_tbls2',$carride_tbls2)
                           ->with('source',$source)
@@ -257,7 +276,8 @@ class VanController extends Controller
                           ->with('dateout',$dateout)
                           ->with('book_above',"false")
                           ->with('book_below',"false")
-                          ->with('name',$name);
+                          ->with('name',$name)
+                          ->with('tel',$tel);
    }
 
    public function main(Request $request){
@@ -267,8 +287,8 @@ class VanController extends Controller
     $page = ($page !=null)?$page:1;
 
 
-    $source = DB::table('carride_tbls')->distinct()->get(['source']);
-    $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
+    $source = DB::table('carride_tbls')->distinct()->orderBy('source','asc')->get(['source']);
+    $endways = DB::table('carride_tbls')->distinct()->orderBy('endways','asc')->get(['endways']);
     
     return view('main')->with('carride_tbls',$carride_tbls)
                           ->with('source',$source)
@@ -279,15 +299,15 @@ class VanController extends Controller
 
    public function main_1(Request $request){
     // $carride_tbls = DB::table('carride_tbls')->orderBy('carrid_id', 'desc')->paginate(10);
-
     $NUM_PAGE = 10;
     $carride_tbls = Carride_tbl::paginate($NUM_PAGE);
     $page = $request->input('page');
     $page = ($page !=null)?$page:1;
 
+    $source = DB::table('carride_tbls')->distinct()->orderBy('source','asc')->get(['source']);
+    $endways = DB::table('carride_tbls')->distinct()->orderBy('source','asc')->get(['endways']);
 
-    $source = DB::table('carride_tbls')->distinct()->get(['source']);
-    $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
+    
     
     return view('main_1')->with('carride_tbls',$carride_tbls)
                           ->with('source',$source)
@@ -306,7 +326,7 @@ class VanController extends Controller
     $source = DB::table('carride_tbls')->distinct()->get(['source']);
     $endways = DB::table('carride_tbls')->distinct()->get(['endways']);
     
-    return view('main_1')->with('carride_tbls',$carride_tbls)
+    return view('main_admin')->with('carride_tbls',$carride_tbls)
                           ->with('source',$source)
                           ->with('endways',$endways)
                           ->with('page',$page)
@@ -335,7 +355,7 @@ class VanController extends Controller
 
    public function bookcar(Request $request)
    {
-    
+
 
       if($request->get('book_below')=="true")
        {
@@ -366,7 +386,8 @@ class VanController extends Controller
             $dateout = $request->get('dateout');
             $time_out = $request->get('time_out');
             $points = DB::table('points')->where('psource',$pp)->where('pendway',$nn)->value('id_point');
-           
+            if($points==null)
+              $points = DB::table('points')->where('psource',$nn)->where('pendway',$pp)->value('id_point');
             $num = $request->get('num'); 
 
           for($i=0;$i<count($checkbox);$i++)

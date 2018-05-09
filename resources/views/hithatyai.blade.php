@@ -20,34 +20,30 @@
 <body>
 
 @include('navbar_1')<br>
-<h3><span class="glyphicon glyphicon-tree-deciduous"></span> ตลาดกิมหยง</h3>
-<h5>อัพเดตล่าสุดเมื่อ : 14 พฤศจิกายน 2560</h5><br><br>
-
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
-
+  <h3><span class="glyphicon glyphicon-tree-deciduous"></span> ตลาดกิมหยง</h3>
+  <h5>อัพเดตล่าสุดเมื่อ : 14 พฤศจิกายน 2560</h5><br><br>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <!-- begin panel group -->
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                
-                <!-- panel 1 -->
-                <div class="panel panel-default">
-                    <!--wrap panel heading in span to trigger image change as well as collapse -->
-                    <span class="side-tab" data-target="#tab1" data-toggle="tab" role="tab" aria-expanded="false">
-                        <div class="panel-heading" role="tab" id="headingOne"data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <h1 class="panel-title">  <span class="glyphicon glyphicon-tree-deciduous"></span> <B>ตลาดกิมหยง</B></h1>
-                        </div>
-                    </span>
+  <div class="row">
+    <div class="col-md-4">
+      <!-- begin panel group -->
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <!-- panel 1 -->
+            <div class="panel panel-default">
+              <!--wrap panel heading in span to trigger image change as well as collapse -->
+                <span class="side-tab" data-target="#tab1" data-toggle="tab" role="tab" aria-expanded="false">
+                  <div class="panel-heading" role="tab" id="headingOne"data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h1 class="panel-title">  <span class="glyphicon glyphicon-tree-deciduous"></span> <B>ตลาดกิมหยง</B></h1>
+                  </div>
+                </span>
                     
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="panel-body">
-                        <!-- Tab content goes here -->
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                      <!-- Tab content goes here -->
                         <h4>ไม่ว่าจะเที่ยวหาดใหญ่ที่ไหน แต่ถ้าไม่ได้เดินที่นี่ ขอบอกว่าเหมือนมาไม่ถึงอยู่ดี <B>ตลาดกิมหยง</B> ตลาดขนาดใหญ่มีของมากมาย นำเข้าจากมาเลเซียบ้าง อินโดนีเซียบ้าง ราคาจะถูกกว่าซื้อตามห้างทั่วไป สินค้าฮอตฮิตที่ขึ้นชื่อได้แก่ พวกเม็ดมะม่วงหิมพานต์อบ อัลมอนด์อบ ถั่วพิสทาชิโอ เกาลัด ผลไม้คุณภาพ ผลไม้อบแห้ง กระเป๋า เสื้อผ้า เครื่องใช้ไฟฟ้า ให้จับจ่ายใช้สอยกันได้สบายๆ สำหรับขสช๊อปเดินได้ทั้งแต่เช้ายันเย็น</h4>
-                        </div>
                     </div>
-                </div> 
+                  </div>
+            </div> 
                 <!-- / panel 1 -->
                 
                 <!-- panel 2 -->
@@ -107,16 +103,16 @@
                         <div class="tab-featured-image">
                             <div class="tab-content">
                                 <div class="tab-pane  in active" id="tab1">
-                                        <img src="https://pbs.twimg.com/media/ClinxkGUYAAKCTZ.jpg" width="70%" height="70%" alt="tab1" class="img img-responsive">
+                                        <img src="img/pic21.jpg" width="50%" height="50%" alt="tab1" class="img img-responsive">
                                 </div>
                                 <div class="tab-pane " id="tab2">
                                     
-                                        <img src="http://www.hatyaicity.go.th/files/com_fun/2016-09_0796250b7366217.jpg"width="100%" height="100%">
+                                        <img src="img/pic22.jpg"width="100%" height="100%">
                                     
                                 </div>
                                 <div class="tab-pane fade" id="tab3">
                                       
-                                        <img src="http://cdn.airportthai.co.th/uploads/profiles/0000000004/filemanager/images/%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%81%E0%B8%B4%E0%B8%A1%E0%B8%AB%E0%B8%A2%E0%B8%87.jpg"width="90%" height="90%">
+                                        <img src="img/pic23.jpg"width="90%" height="90%">
                                 </div>
                             </div>
                         </div>

@@ -26,24 +26,6 @@ Route::get('/main_admin', function () {
 Route::get('/phuket', function () {
     return view('phuket');
 });
-Route::get('/pangnga', function () {
-    return view('pangnga');
-});
-Route::get('/krabi', function () {
-    return view('krabi');
-});
-Route::get('/surad', function () {
-    return view('surad');
-});
-Route::get('/nakhon', function () {
-    return view('nakhon');
-});
-Route::get('/hatyai', function () {
-    return view('hatyai');
-});
-Route::get('/kohlanta', function () {
-    return view('kohlanta');
-});
 
 Route::get('/stepreserve', function () {
     return view('stepreserve');
@@ -86,6 +68,13 @@ Route::get('/receipts', function () {
     return view('receipts');
 });
 
+Route::get('/success', 'ReservationsController@success');
+Route::get('/mailsuccess','ReservationsController@mailsuccess');
+Route::get('/deposit', 'ReservationsController@deposit');
+Route::post('/depose', 'ReservationsController@depose');
+Route::post('/reserve_deposit', 'ReservationsController@reserve_deposit');
+Route::get('/reservations_deposit', 'ReservationsController@reservations_deposit');
+
 Route::post('reserve_ticket','VanController@reserve_ticket');
 Route::get('reserve_ticket','VanController@reserve_ticket');
 Route::get('reserve_ticket','VanController@getreserve_ticket');
@@ -96,6 +85,12 @@ Auth::routes();
 
 Route::post('carride','CarrideController@carride');
 Route::get('regis_carride','CarrideController@showcarrid');
+
+Route::post('point','CarrideController@point');
+Route::get('regis_point','CarrideController@showpoint');
+
+Route::post('pointticket','CarrideController@pointticket');
+Route::get('regis_pointticket','CarrideController@showpointticket');
 
 Route::post('driver','DriverController@driver');
 Route::get('regis_driver','DriverController@showdriver');
@@ -117,6 +112,7 @@ Route::post('/reserve_3','VanController@reserve_3');
 Route::get('/reserve_3','VanController@reserve_3');
 Route::get('/reserve_2','VanController@serach1');
 Route::get('/reserve','VanController@reserve_2');
+Route::get('/receipts','ReservationsController@receipts');
 Route::post('/show_income_each','ReservationsController@show_income_each');
 Route::post('/show_income_month','ReservationsController@show_income_month');
 Route::get('/anony_reserve','ReservationsController@anony_reserve');
@@ -129,6 +125,14 @@ Route::get('/main_admin','VanController@main_admin');
 Route::get('/update/{id}', 'CarrideController@update');
 Route::post('/update', 'CarrideController@updateAction');
 Route::get('/delete/{id}', 'CarrideController@delete');
+
+Route::get('/updatepoint/{id}', 'CarrideController@updatepoint');
+Route::post('/updatepoint', 'CarrideController@updateActiona');
+Route::get('/deletepoint/{id}', 'CarrideController@deletepoint');
+
+Route::get('/updatepointticket/{id}', 'CarrideController@updatepointticket');
+Route::post('/updatepointticket', 'CarrideController@updateActionpointticket');
+Route::get('/deletepointticket/{id}', 'CarrideController@deletepointticket');
 
 Route::get('/updatevan/{id}', 'VanController@update');
 Route::post('/updatevan', 'VanController@updateAction');
@@ -149,3 +153,13 @@ Route::post('bookcar','VanController@bookcar');
 Route::get('changepassword', 'Auth\UpdatePasswordController@index')->name('password.form');
 Route::post('changepassword', 'Auth\UpdatePasswordController@update')->name('password.update');
 
+Route::post('update_status','ReservationsController@update_status');
+Route::post('deletedeposit','ReservationsController@delete');
+
+Route::get('/send', 'NewsController@send');
+
+Route::get('pointticket/{id}', 'CarrideController@show');
+
+Route::get('/message','ReservationsController@message');
+
+    

@@ -24,6 +24,7 @@
 <body>
 
 @include('navbar_1')
+
 <div class="container">
   <div class="row">
     <div class="col-md 6">

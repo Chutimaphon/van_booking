@@ -14,6 +14,7 @@ use DB;
 use Session;
 use \Input as Input;
 use App\News_tbl;
+use Mail;
 
 class NewsController extends Controller
 {
@@ -66,4 +67,20 @@ class NewsController extends Controller
             News_tbl::destroy($id_news);
             return redirect('/regis_news');
         }
+
+    public function send()
+  {
+        $data = array('name'=>"Our Code World");
+        // Path or name to the blade template to be rendered
+        $template_path = 'email_template';
+
+        Mail::send($template_path, $data, function($message) {
+            // Set the receiver and subject of the mail.
+            $message->to('nanping3856@gmail.com', 'Receiver Name')->subject('Laravel HTML Mail');
+            // Set the sender
+            $message->from('nanping3856@gmail.com','Our Code World');
+        });
+
+        return "Basic email sent, check your inbox.";
+    }
 }

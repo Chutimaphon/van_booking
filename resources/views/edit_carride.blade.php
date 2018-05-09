@@ -18,36 +18,33 @@
 <body>
 <form class="form-horizontal" action="{{url('update')}}" method="POST" role="form">
                     {!! csrf_field() !!}
-                    <fieldset>
-
+<fieldset>
 @include('navbar_admin')
 
 <div class="container">
-<div class="row">
-  <div class="col-md-4">
-  <h2>บันทึกเที่ยวรถ</h2>
-    <div class="form-group">
-      <label for="inputdefault">ต้นทาง</label>
-      <input class="form-control" name="source"id="inputdefault" type="text" value="{{$carride_tbls->source}}">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>บันทึกเที่ยวรถ</h2>
+        <div class="form-group">
+          <label for="inputdefault">ต้นทาง</label>
+            <input class="form-control" name="source"id="inputdefault" type="text" value="{{$carride_tbls->source}}">
+        </div>
+        <div class="form-group">
+          <label for="inputdefault">ปลายทาง</label>
+            <input class="form-control" name="endways"id="inputdefault" type="text" value="{{$carride_tbls->endways}}">
+        </div>
+        <div class="form-group">
+          <label for="sel1">เวลาที่รถออก</label>
+            <input class="form-control" name="time_out" type="time" value="{{$carride_tbls->time_out}}"></input>
+        </div> 
+          <input type="hidden" name="carrid_id" value="{{$carride_tbls->carrid_id}}">
+          <input type="submit" id="submit" name="submit" class="btn btn-success">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="inputdefault">ปลายทาง</label>
-      <input class="form-control" name="endways"id="inputdefault" type="text" value="{{$carride_tbls->endways}}">
-    </div>
-    <div class="form-group">
-      <label for="sel1">เวลาที่รถออก</label>
-      <input class="form-control" name="time_out" type="time" value="{{$carride_tbls->time_out}}"></input>
-    </div> 
-    <input type="hidden" name="carrid_id" value="{{$carride_tbls->carrid_id}}">
-  <input type="submit" id="submit" name="submit" class="btn btn-success">
-
-</div>
-</div></div><br><br>
-
-    </fieldset>
+  </div><br><br>
+</fieldset>
 </div>
 </form>
 </body>
 </html>
-</body>
-</html>
+  
